@@ -1,0 +1,166 @@
+.modal-auth {
+    display: none;
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    color: var(--dark-color);
+    z-index: 1;
+
+    .modal-content {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        width: 300px;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        background-color: var(--primary-color);
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+
+        h1 {
+            letter-spacing: 2px;
+        }
+    }
+}
+
+.loginContainer, .registerContainer, .recoverContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    .loginForm, .registerForm, .recoverForm {
+        padding: 1rem;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: url(src/images/abandon.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+
+        h1 {
+            text-align: center;
+        }
+
+        .input-field, .verification-field {  
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0 10px 0;
+           
+
+            label { 
+                font-weight: bold;
+                margin-bottom: 0.25rem;
+            }
+
+            input {
+                width: 100%;
+                padding: 0.5rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                border: 0.2rem solid var(--dark-color);
+            }
+
+            #usernameValid, #passwordValid {
+                .input-validation {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+            }
+
+            .codeOptions {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+
+                button {
+                    width: 100%;
+                    margin-top: 5px;
+                }         
+            }
+
+            .successMessage {
+                color: rgba(14, 63, 4, 0.966);
+                text-shadow: 0 0 3px green, 0 0 5px lightgreen;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .verification-field > .error-message {
+            text-align: center;
+            width: 100%;
+        }
+
+        .image-field {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+
+            img {
+                height: 6rem;
+                width: 6rem;
+                border-radius: 20px;
+                border: 2px solid var(--dark-color);
+            }
+        }
+
+        .group-container {
+            display: flex;
+            flex-direction: column;
+            margin: 5px 0 5px 0;
+            text-align: start;
+            width: 100%;
+
+            p {
+                margin-top: 10px;
+            }
+
+            a {
+                color: blue;
+
+                &:hover {
+                    color: skyblue;
+                }
+            }
+
+            .auth-links {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        button {
+            background-color: var(--button-color);
+            color: var(--light-color);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+    
+    
+            &:hover {
+                transition: background-color 0.5s ease-in-out;
+                background-color: var(--button-hover-color);
+                color: var(--dark-color);
+            }
+        }
+
+        button:disabled {
+            cursor: not-allowed; 
+            background-color: gray; 
+        }
+    }
+}
+

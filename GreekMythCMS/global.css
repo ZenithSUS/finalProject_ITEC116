@@ -1,0 +1,546 @@
+/* Variables of Color */
+:root {
+    --primary-color: #F6ECDB;
+    --secondary-color: #1C1D17;
+    --dark-color: #141414;  
+    --light-color: #FFFBEF;
+    --link-color: blue;
+    --hover-color: orange;
+
+    /* Colors for the pie chart */
+    --posts-color: skyblue;
+    --comments-color: green;
+    --friends-color: yellow;
+    --groups-color: lightcoral;
+
+    /*Colors for the button */
+    --button-color: #1C1D17;
+    --button-hover-color: orange; 
+    --dark-mode-button-color: #BB86FC;
+    --dark-mode-button-hover-color: rgb(109, 15, 109);
+
+    /*Colors for the navs */
+    --nav-hover-color: #1A1A2E;
+    --nav-hover-dark-color: #BB86FC;
+
+    /*Colors for the table options */
+    --options-text-color: #FFFBEF;
+
+    /* Fonts for the system */
+    --font-style1: 'Constatine', 'serif';
+    --font-style2:  monospace;
+    --font-style3: Arial, Helvetica, sans-serif;
+    --font-style: var(--font-style1); /* Default font style */
+}
+
+button {
+    border: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: 5px var(--button-color);
+}
+
+span {
+    color: red;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-top: 0.2rem;
+}
+
+/* Global Styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-style);
+}
+
+/* Styling for Body */
+body {
+    background-image: url(src/images/abandon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--dark-color);
+}
+
+
+header {
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 1);
+    z-index: 999;
+    color: var(--light-color);
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 1rem;
+
+        width: 5rem;
+        height: 5rem;
+        border-radius: 100%;
+
+    }
+
+    .userContainer {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .user {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            height: 4rem;
+            width: 4rem;
+            border-radius: 100%;
+        }
+        
+    }
+}
+
+nav {
+    opacity: 0.9;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--primary-color);
+    padding: 1rem;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, .5);
+    height: calc(100% - 100px);
+    width: 100%;
+    max-width: 240px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+
+    &:hover {
+        scrollbar-width: thin;
+      }
+
+    h1 {
+        padding: 0.5rem;
+        width: 100%;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        color: var(--dark-color);
+        font-size: 1.3rem;
+        padding: 1rem;
+        width: 100%;
+        margin-left: 1rem;
+        white-space: nowrap;
+        border-radius: 20px;
+        cursor: pointer;
+        
+
+        &:hover {
+            background-color: var(--nav-hover-color);
+            color: var(--light-color);
+            transition: background-color 0.3s ease-in-out;
+        }
+    }
+
+    form {
+        display: block;
+        text-decoration: none;
+        color: var(--dark-color);
+        width: 100%;
+        margin-left: 1rem;
+        
+
+        button {
+            font-size: 1.3rem;
+            padding: 1rem;
+            white-space: nowrap;
+            border: none;
+            background-color: transparent;
+            border-radius: 20px;
+            width: 100%;
+            text-align: start;
+            cursor: pointer;
+            color: var(--dark-color);
+
+            &:hover {
+                background-color: var(--button-hover-color);
+                color: var(--light-color);
+                transition: background-color 0.3s ease-in-out;
+            }
+        }
+    }
+    
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 240px;
+    margin-top: 6.25rem;
+    padding: 2rem;
+    gap: 20px;
+
+    /* The Modal (background) */
+    .modal {
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%;
+        overflow: hidden;
+        background-color: transparent;
+        padding-top: 50px;
+        
+
+        .modal-content {
+            position: relative;
+            top: calc(10px + 20px);
+            left: 80px;
+            margin: 5% auto 15% auto;
+            width: fit-content;
+            background-color: var(--primary-color);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            
+            .close-container {
+                float: right;
+
+                /* The Modal Close Button (x) */
+                .close {
+                    cursor: pointer;
+                    font-size: 40px;
+                    font-weight: bold;
+                    color: var(--dark-color);
+
+                    &:hover, &:focus {
+                        color: #f44336;
+                        cursor: pointer;
+                    }
+                }
+            }
+            
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                width: 100%;
+                opacity: 0.9;
+              }
+              
+            
+            .cancelbtn {
+                background-color: var(--button-color);
+                color: var(--light-color);
+
+                &:hover {
+                    background-color: var(--button-hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        
+            .deletebtn {
+                background-color: #f44336;
+                color: var(--dark-color);
+                
+                &:hover {
+                    background-color: var(--hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .modal-warning {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: transparent;
+        padding-top: 50px;
+        z-index: 1;
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            top: calc(10px + 20px);
+            left: 80px;
+            margin: 5% auto 15% auto;
+            width: fit-content;
+            background-color: var(--primary-color);
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+
+            button {
+                font-size: 1rem;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                width: 100%;
+                opacity: 0.9;
+              }
+
+
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+              
+            
+            .cancelbtn {
+                background-color: var(--button-color);
+                color: var(--light-color);
+
+                &:hover {
+                    background-color: var(--button-hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        
+            .confirmbtn {
+                background-color: #f44336;
+                color: var(--dark-color);
+                
+                &:hover {
+                    background-color: var(--hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .modal-change {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: transparent;
+        padding-top: 50px;
+        z-index: 1;
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            top: calc(10px + 20px);
+            left: 80px;
+            margin: 5% auto 15% auto;
+            width: fit-content;
+            background-color: var(--primary-color);
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+
+            button {
+                font-size: 1rem;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                border-radius: 20px;
+                width: 100%;
+                opacity: 0.9;
+              }
+
+
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+              
+            
+            .cancelbtn {
+                background-color: var(--button-color);
+                color: var(--light-color);
+
+                &:hover {
+                    background-color: var(--button-hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        
+            .confirmbtn {
+                background-color: #f44336;
+                color: var(--dark-color);
+                
+                &:hover {
+                    background-color: var(--hover-color);
+                    color: var(--dark-color);
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    .delete-account-container {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 1; 
+        left: 0;
+        top: 30px;
+        width: 100%; 
+        height: 100%;
+        overflow: hidden;
+        background-color: transparent;
+        padding-top: 50px;
+    
+        form {
+            position: relative;
+            top: calc(10px + 10px);
+            left: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--light-color);
+            width: 100%;
+            max-width: fit-content;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+            margin: 5% auto 15% auto;
+    
+            .gridBox {
+                display: flex;
+                flex-direction: column;
+                margin-top: 0.5rem;
+                gap: 10px;
+                width: 100%;
+            }
+    
+            .input-field {
+                display: flex;
+                flex-direction: column;
+                margin: 10px 0 10px 0;
+            }
+
+            label { 
+                font-weight: bold;
+                margin-bottom: 0.25rem;
+            }
+            input {
+                width: 100%;
+                padding: 0.5rem;
+                font-size: 1rem;
+                border-radius: 0.5rem;
+                border: 0.2rem solid var(--dark-color);
+            }
+    
+            .delete-options-container {
+                display: flex;
+                flex-direction: column;
+    
+                .delete-options {
+                    display: flex;
+                    gap: 20px;
+                    margin-top: 5px;
+        
+                    button {
+                        width: fit-content;
+                        background-color: var(--button-color);
+                        color: var(--light-color);
+                        border-radius: 0.5rem;
+                        padding: 0.5rem;
+                        margin-bottom: 0.5rem;
+                        font-size: 1rem;
+                        cursor: pointer;
+            
+                        &:hover {
+                            transition: background-color 0.5s ease-in-out;
+                            background-color: var(--button-hover-color);
+                            color: var(--dark-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .notification-modal {
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 20px;
+        flex-direction: column;
+        color: var(--dark-color);
+        z-index: 1;
+
+        .modal-content {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            width: 300px;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            background-color: var(--primary-color);
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+
+            h1 {
+                letter-spacing: 2px;
+            }
+        }
+    }
+}
