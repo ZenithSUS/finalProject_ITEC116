@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
         `;
 
         postLink.innerHTML = `
-            <h4>Actual Post: <a href='http://localhost/GreekMyth/user/currentPost.php?post_id=${data.post_id}' target="_blank">Click Here</a></h4>
+            <h4>Actual Post: ${data.status === 1 ? "<a href='" + "http://localhost/GreekMyth/user/currentPost.php?post_id=" + data.post_id + "" + "' target='_blank'>" + "Click Here" + "</a>" :  "The post is disabled"}</h4>
         `;
 
         const modalChange = document.getElementById('modal-change');
