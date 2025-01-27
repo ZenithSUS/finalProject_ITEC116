@@ -178,10 +178,10 @@ const indexDisplayData = (data) => {
       const totalGroups = document.getElementById('totalGroups');
       const totalComments = document.getElementById('totalComments');
 
-      totalUsers.innerHTML = data.users.data.length ? data.users.data.length : "N/A";
-      totalPosts.innerHTML = data.posts.data.length ? data.posts.data.length : "N/A";
-      totalGroups.innerHTML = data.groups.data.length ? data.groups.data.length : "N/A";
-      totalComments.innerHTML = data.comments.data.length ? data.comments.data.length : "N/A";
+      totalUsers.innerHTML = data.users.status !== 404 ? data.users.data.length : "N/A";
+      totalPosts.innerHTML = data.posts.status != 404 ? data.posts.data.length : "N/A";
+      totalGroups.innerHTML = data.groups.status !== 404 ? data.groups.data.length : "N/A";
+      totalComments.innerHTML = data.comments.status !== 404 ? data.comments.data.length : "N/A";
   }
   
   const recentPosts = (posts) => {
@@ -225,14 +225,14 @@ const indexDisplayData = (data) => {
   if(data){
     overallData(data);
 
-    if(data.posts.data.length > 0){
+    if(data.posts.data.length > 0 && data.users.status !== 404){
       recentPosts(data.posts);
     } else {
       const recentPostsContainer = document.getElementById('recentPosts-container');
       recentPostsContainer.innerHTML = `<h3>No recent posts</h3>`
     }
 
-    if(data.users.data.length > 0){
+    if(data.users.data.length > 0 && data.users.status !== 404){
       mostFriends(sortTotalFriends(data.users.data));
     } else {
       const mostFriendsContainer = document.getElementById('mostfriends-container');
@@ -300,7 +300,7 @@ const userDisplayData = (user, page = currentPage) =>{
       const tableBody = document.querySelector('tbody');
       tableBody.innerHTML = `
           <tr>
-              <td rowspan="6">No Users Available</td>
+              <td colspan="7">No Users Available</td>
           </tr>
       `;
   }
@@ -311,11 +311,12 @@ const userDisplayData = (user, page = currentPage) =>{
       return dateFormat;
   }
 
+  if(user.status === 404){
+    handleNoData();
+    return;
+  }
+
   if(user && user.status < 300){
-      if(user.data.length === 0){
-          handleNoData();
-          return;
-      }
 
       userTableData(user);
 
@@ -644,7 +645,7 @@ const groupDisplayData = (groups, page = currentPage) => {
       const tableBody = document.querySelector('tbody');
       tableBody.innerHTML = `
           <tr>
-              <td rowspan="6">No Groups Available</td>
+              <td colspan="6">No Groups Available</td>
           </tr>
       `;
   }
@@ -659,11 +660,12 @@ const groupDisplayData = (groups, page = currentPage) => {
       return groups.data.sort((a,b) => a.name.localeCompare(b.name));
   }
 
+  if (groups.status === 404) {
+    handleNoData();
+    return;
+  }
+
   if(groups && groups.status < 300){
-      if (groups.data.length === 0) {
-          handleNoData();
-          return;
-      }
       
       const groupdata = sortGroups(groups)
       groupsTableData(groupdata)
@@ -818,9 +820,10 @@ const commentDisplayData = (comments, page = currentPage) => {
       const tableBody = document.querySelector('tbody');
       tableBody.innerHTML = `
           <tr>
-              <td rowspan="7">No Comments Available</td>
+              <td colspan="10">No Comments Available</td>
           </tr>
       `;
+      document.querySelector('.pagination-container').style.display = 'none';
   }
 
   const sortedComments = (comments) => {
@@ -839,11 +842,13 @@ const commentDisplayData = (comments, page = currentPage) => {
       return dateFormat;
   }
 
+
+  if (comments.status === 404) {
+    handleNoData();
+    return;
+  }
+
   if(comments && comments.status < 300){
-      if (comments.data.length === 0) {
-          handleNoData();
-          return;
-      }
 
       commentsTableData(sortedComments(comments))
 
