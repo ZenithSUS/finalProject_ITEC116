@@ -280,7 +280,7 @@ class Register extends Api {
     }
 
     private function userExists(string $username) : bool {
-        $sql = "SELECT username FROM Admin_Users WHERE username = ?";
+        $sql = "SELECT username FROM admin_users WHERE username = ?";
         $stmt = $this->conn->prepare($sql);
 
         if(!$stmt){
@@ -296,7 +296,7 @@ class Register extends Api {
     }
 
     private function emailExists(string $email) : bool {
-        $sql = "SELECT email FROM Admin_Users WHERE email = ?";
+        $sql = "SELECT email FROM admin_users WHERE email = ?";
         $stmt = $this->conn->prepare($sql);
 
         if(!$stmt){
