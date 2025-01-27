@@ -201,7 +201,7 @@
                 <!-- Comment Field -->
                 <textarea name='comment' id='comment' cols='30' rows='10'></textarea>
                 <!-- Submit Button -->
-                <button type='submit' name='commentForm' id='commentBtn' onclick="disableCommentBtn()">Comment</button>
+                <button type='submit' name='commentForm' id='commentBtn'>Comment</button>
                 </form>
             </div>
 
