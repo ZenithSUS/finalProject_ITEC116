@@ -3,11 +3,11 @@ require_once('../config.php');
 class Api extends Database {
     protected $conn;
     protected $imagePath = [
-        "default_users" => "/GreekMyth/img/default.jpg",
-        "default_gods" => "/GreekMyth/img/hero.png",
+        "default_users" => "/finalProject_ITEC116/GreekMyth/img/default.jpg",
+        "default_gods" => "/finalProject_ITEC116/GreekMyth/img/hero.png",
         "admins" => "/GreekMyth/img/admin/", 
-        "gods" => "/GreekMyth/img/gods/",
-        "users" => "/GreekMyth/img/u/"
+        "gods" => "/finalProject_ITEC116/GreekMyth/img/gods/",
+        "users" => "/finalProject_ITEC116/GreekMyth/img/u/"
     ];
 
     protected $imageConfig = [
