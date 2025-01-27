@@ -5,15 +5,15 @@ class Api extends Database {
     protected $imagePath = [
         "default_users" => "/finalProject_ITEC116/GreekMyth/img/default.jpg",
         "default_gods" => "/finalProject_ITEC116/GreekMyth/img/hero.png",
-        "admins" => "/GreekMyth/img/admin/", 
+        "admins" => "/finalProject_ITEC116/GreekMyth/img/admin/", 
         "gods" => "/finalProject_ITEC116/GreekMyth/img/gods/",
         "users" => "/finalProject_ITEC116/GreekMyth/img/u/"
     ];
 
     protected $imageConfig = [
-        "admins" => "C:/xampp/htdocs/GreekMyth/img/admin/",
-        "gods" => "C:/xampp/htdocs/GreekMyth/img/gods/",
-        "users" => "C:/xampp/htdocs/GreekMyth/img/u/"
+        "admins" => "C:/xampp/htdocs/finalProject_ITEC116/GreekMyth/img/admin/",
+        "gods" => "C:/xampp/htdocs/finalProject_ITEC116/GreekMyth/img/gods/",
+        "users" => "C:/xampp/htdocs/finalProject_ITEC116/GreekMyth/img/u/"
     ];
 
     protected function queryFailed(string $type = null, array $errors = null) : string {
