@@ -139,4 +139,13 @@ if ($requestMethod == "POST") {
         echo $recover->recoverAcc();
     }
 }
+
+if($requestMethod == "GET" && $token == null) {
+    $response = array(
+        "status" => 404,
+        "message" => "How did you get here?",
+    );
+    header("HTTP/1.1 404 Not Found");
+    echo json_encode($response);
+}
 ?>
