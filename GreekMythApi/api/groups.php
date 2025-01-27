@@ -13,6 +13,10 @@ if (function_exists('getallheaders')) {
         $headers['Authorization'] = $_SERVER['HTTP_AUTHORIZATION'];
     } elseif (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
         $headers['Authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+    } elseif (isset($_SERVER['Authorization'])) {
+        $headers['Authorization'] = $_SERVER['Authorization'];
+    } elseif (isset($_SERVER['HTTP_X_AUTHORIZATION'])) {
+        $headers['Authorization'] = $_SERVER['HTTP_X_AUTHORIZATION']; 
     }
 }
 
