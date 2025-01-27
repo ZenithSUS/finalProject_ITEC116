@@ -40,7 +40,7 @@ const font_style = localStorage.getItem('font-style');
 
 // Check if the user is logged in
 if (!token) {
-  window.location.href = '/auth/login.html';
+  window.location.href = 'auth/login.html';
 }
 
 // Object to store the fetched data
