@@ -1,5 +1,5 @@
 // URL for the API endpoint
-const url = "http://localhost/GreekMythApi/api/auth.php";
+const url = "http://localhost/finalProject_ITEC116/GreekMythApi/api/auth.php";
 
 // Elements of every authorization pages
 const loginForm = document.querySelector('#loginForm');

@@ -1,8 +1,8 @@
 // Endpoints for GreekMyth API
-const posts_url = "http://localhost/GreekMythApi/api/posts.php";
-const users_url = "http://localhost/GreekMythApi/api/users.php";
-const groups_url = "http://localhost/GreekMythApi/api/groups.php";
-const comments_url = "http://localhost/GreekMythApi/api/comments.php";
+const posts_url = "http://localhost/finalProject_ITEC116/GreekMythApi/api/posts.php";
+const users_url = "http://localhost/finalProject_ITEC116/GreekMythApi/api/users.php";
+const groups_url = "http://localhost/finalProject_ITEC116/GreekMythApi/api/groups.php";
+const comments_url = "http://localhost/finalProject_ITEC116/GreekMythApi/api/comments.php";
 
 
 // Get the current URL
@@ -40,7 +40,7 @@ const font_style = localStorage.getItem('font-style');
 
 // Check if the user is logged in
 if (!token) {
-  window.location.href = 'auth/login.html';
+  window.location.href = '/auth/login.html';
 }
 
 // Object to store the fetched data
@@ -49,7 +49,7 @@ let fetchedData;
 // Fetch Admin Data
 async function fetchAdminData() {
     try {
-      const response = await fetch('http://localhost/GreekMythApi/api/users.php?user_id=' + user_id, {
+      const response = await fetch('http://localhost/finalProject_ITEC116/GreekMythApi/api/users.php?user_id=' + user_id, {
           method: "GET",
           headers: {
               "Content-Type": "application/json",
