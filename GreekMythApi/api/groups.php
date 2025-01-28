@@ -47,6 +47,13 @@ if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
         $type = $_POST['type'] ?? null;
         if(isset($id) && isset($type)){
             echo $groups->changePermissionGroup($id, $type);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 
@@ -54,14 +61,28 @@ if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : "";
         if(isset($id)){
             echo $groups->getGroup($id);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 
     if($requestMethod == "DELETE"){
-        $id = htmlentities($_GET['id']) ?? null;
-        $type = htmlentities($_GET['type']) ?? null;
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
+        $type = isset($_GET['type']) ? htmlentities($_GET['type']) : null;
         if((isset($id) && $id !== null) && $type === "delete"){
             echo $groups->deleteGroup($id);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 

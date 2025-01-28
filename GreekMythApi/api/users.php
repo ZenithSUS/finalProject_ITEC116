@@ -77,6 +77,13 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
             echo $users->getUser($_GET['id']);
         } else if (isset($_GET['user_id'])){
             echo $users->getAdminInfo($_GET['user_id']);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
     
@@ -90,6 +97,15 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
         
         if((isset($id) && $id !== null) && $type === "admin"){
             echo $users->deleteAdminUser($id);
+        }
+
+        if((isset($id) && $id !== null) && !isset($type)){
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
     

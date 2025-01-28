@@ -48,13 +48,27 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
         $type = isset($_POST['type']) ? htmlentities($_POST['type']) : null;
         if(isset($id) && isset($type)){
             echo $commments->changePermissionComment($id, $type);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 
     if($requestMethod == "GET"){
-        $id = htmlentities($_GET['id']) ?? null;
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         if(isset($id)){
             echo $commments->getComment($id);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 

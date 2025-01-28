@@ -46,12 +46,26 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         if(isset($id) && isset($type)){
             echo $posts->changePermissionPost($id, $type);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 
     if($requestMethod == "GET"){
         if(isset($_GET['id'])){
             echo $posts->getPosts($_GET['id']);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
 
@@ -61,6 +75,13 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
 
         if((isset($id) && $id !== null) && $type === "delete"){
             echo $posts->deletePost($id);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
         }
     }
     

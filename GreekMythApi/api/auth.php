@@ -140,9 +140,18 @@ if ($requestMethod == "POST") {
         $recover = new Recover($email, $password, $confirm_password, $emailVerified);
         echo $recover->recoverAcc();
     }
+
+    if(!isset($_POST['Process'])) {
+        $response = array( 
+            "status" => 400,
+            "message" => "Bad request"
+        );
+        header("HTTP/1.1 400 Bad Request");
+        echo json_encode($response);
+    }
 }
 
-if($requestMethod == "GET" && $token == null) {
+if(($requestMethod == "GET" || $requestMethod == "DELETE" || $requestMethod == "PUT") && $token == null) {
     $response = array(
         "status" => 404,
         "message" => "How did you get here?",
