@@ -24,6 +24,7 @@
     <div class="regContainer">
         <!-- Register Form -->
         <form action="../actions/register_act.php" method="post" class="regForm">
+        <a href="../home.php" class="back-button">Go Back to Home</a>
             <!-- Heading or Title -->
             <h1>Register</h1>
             <!-- Username or Email Field -->

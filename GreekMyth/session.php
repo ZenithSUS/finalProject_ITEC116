@@ -10,7 +10,7 @@
             //Destroy cookies
             setcookie("user_id", "", time() - 3600, "/");
             setcookie("username", "", time() - 3600, "/");
-            header("Location: auth/login.php?error=Session Expired! Please login again!");
+            header("Location: home.php?error=Session Expired! Please login again!");
             exit();
 
             //Close connection

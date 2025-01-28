@@ -9,7 +9,7 @@
         session_unset();
         //Destroy session
         session_destroy();
-        echo "<script>window.location.href = 'auth/login.php'</script>";
+        echo "<script>window.location.href = 'home.php'</script>";
     } else {
         checkSessionTimeout();
     }

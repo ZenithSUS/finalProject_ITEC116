@@ -46,6 +46,21 @@
     max-width: 400px;
     color: var(--dark-color);
 
+    .back-button {
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--dark-color);
+        cursor: pointer;
+        text-decoration: none;
+        width: fit-content;
+
+        &:hover {
+            transition: background-color 0.5s ease-in-out;
+            color: var(--light-color);
+        }
+    }
+
     /* Styling for Forgot Password Form Children or Elements */
     label {
         font-weight: bold;

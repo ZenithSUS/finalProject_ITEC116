@@ -24,6 +24,7 @@
     <div class="container">
         <!-- Forgot Password Form -->
         <form action="../actions/recover_act.php" method="post" class="forgotForm">
+        <a href="../home.php" class="back-button">Go Back to Home</a>
             <!-- Heading or Title -->
             <h1>Account Recovery</h1>
             <!-- Email Field -->
