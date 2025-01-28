@@ -422,6 +422,8 @@
                 if($pagePictureError === UPLOAD_ERR_OK && $pagePictureSize > 0) {
                     //Check if file is too big
                     if($pagePictureSize < 1000000) {
+                        //Generate unique file name
+                        $pagePictureName = uniqid('', true) . "." . $pagePictureActualExt;
                         //Set destination
                         $pagePictureDestination = '../../img/gods/' . $pagePictureName;
                         //Move file
