@@ -103,6 +103,16 @@ main {
   transition: padding 0.3s ease;
 }
 
+main > .session-error {
+  color: red;
+  background-color: lightcoral;
+  border: 1px solid red;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
 section {
   margin-bottom: 2rem;
   background-color: #fff;

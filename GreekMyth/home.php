@@ -24,12 +24,13 @@
     <h1>GREEK MYTHOLOGY</h1>
     <p>Content Management System</p>
     <a href="about.php">About Us</a>
-    <?php if(isset($_GET['error'])):?>
-      <p class="session-error"><?php echo $_GET['error']; ?></p>
-    <?php endif; ?>
   </header>
 
   <main>
+    <?php if(isset($_GET['error'])):?>
+      <p class="session-error"><?php echo $_GET['error']; ?></p>
+    <?php endif; ?>
+
     <section id="introduction">
       <h2>Introduction</h2>
       <p>
