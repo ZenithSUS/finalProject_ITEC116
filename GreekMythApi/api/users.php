@@ -70,6 +70,22 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
             $fontstyle = htmlentities(isset($_POST['font_style'])) ? htmlentities($_POST['font_style']) : null;
             echo $users->changeThemeAdmin($id, $type, $fontstyle); 
         }
+
+        if(!isset($id) && !isset($type)){
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
+        } else if(!isset($type)){
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
+        }
     }
 
     if($requestMethod == "GET") {
