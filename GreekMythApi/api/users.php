@@ -44,7 +44,7 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
     }
 
     if($requestMethod == "POST" && isset($_GET['id'])){
-        $id = htmlentities($_GET['id']) ?? null;
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         $type = htmlentities(isset($_POST['type'])) ? htmlentities($_POST['type']) : null;
         
         if(isset($id) && $id !== null && ($type === "user" || $type === "admin")){
@@ -81,8 +81,8 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
     }
     
     if($requestMethod == "DELETE"){
-        $id = htmlentities($_GET['id']) ?? null;
-        $type = htmlentities($_GET['type']) ?? null;
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
+        $type = isset($_GET['type']) ? htmlentities($_GET['type']) : null;
 
         if((isset($id) && $id !== null) && $type === "user"){
             echo $users->deleteUser($id);

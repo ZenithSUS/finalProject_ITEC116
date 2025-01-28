@@ -43,15 +43,15 @@ if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
     }
 
     if($requestMethod == "POST" && isset($_GET['id'])){
-        $id = htmlentities($_GET['id']) ?? null;
-        $type = $_POST['type'];
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
+        $type = $_POST['type'] ?? null;
         if(isset($id) && isset($type)){
             echo $groups->changePermissionGroup($id, $type);
         }
     }
 
     if($requestMethod == "GET"){
-        $id = htmlentities($_GET['id']) ?? null;
+        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : "";
         if(isset($id)){
             echo $groups->getGroup($id);
         }
