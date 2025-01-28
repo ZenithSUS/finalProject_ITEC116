@@ -1,9 +1,11 @@
-<?php session_start();
-        // Check if the session is set 
-        if(isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])): 
-            echo "<script>window.location.href = '../index.php'</script>";
+<?php 
+    session_start();
+    // Check if the session is set 
+    if(isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
+        echo "<script>window.location.href = '../index.php'</script>";
+    }      
 ?>
-<?php endif; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +23,7 @@
     <div class="logContainer">
         <!-- Login Form -->
         <form action="../actions/login_act.php" method="post" class="loginForm">
+        <a href="../home.php" class="back-button">Go Back to Home</a>
         <!-- Heading or Title -->
         <h1>Login</h1>
             <!-- Username or Email Field -->

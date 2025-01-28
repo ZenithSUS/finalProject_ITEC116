@@ -40,6 +40,21 @@
         max-width: 400px;
         color: var(--dark-color);
     }
+
+    form .back-button {
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        color: var(--dark-color);
+        cursor: pointer;
+        text-decoration: none;
+        width: fit-content;
+
+        &:hover {
+            transition: background-color 0.5s ease-in-out;
+            color: var(--light-color);
+        }
+    }
     
     form h1 {
         text-align: center;
