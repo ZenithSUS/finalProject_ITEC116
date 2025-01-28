@@ -99,7 +99,7 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
             echo $users->deleteAdminUser($id);
         }
 
-        if((isset($id) && $id !== null) && !isset($type)){
+        if(!isset($id) && !isset($type)){
             $response = array(
                 "status" => 400,
                 "message" => "Bad request"
