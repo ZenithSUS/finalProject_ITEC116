@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/currentPost.css">
     <link rel="stylesheet" href="../styles/comment.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>
         <?php 

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/profile.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>Edit Profile</title>
 </head>

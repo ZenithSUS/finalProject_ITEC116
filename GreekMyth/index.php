@@ -24,6 +24,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="styles/index.css">
+    <link rel="icon" href="img/misc/logo_transparent.png">
     <title>Greek Myth</title>
 </head>
 <body>

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/createPage.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>Create Page</title>
 </head>

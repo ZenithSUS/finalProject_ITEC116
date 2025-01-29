@@ -10,7 +10,7 @@
   <title>About</title>
   <link rel="icon" href="new_logo.png">
   <link rel="stylesheet" href="styles/about.css">
-
+  <link rel="icon" href="img/misc/logo_transparent.png">
 </head>
 <body>
   <div class="main-title">About the developers</div>
