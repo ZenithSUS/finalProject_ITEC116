@@ -88,7 +88,7 @@ class Api extends Database {
         if ($type === "groups") {
             if(!empty($row[0]['image_url'])) {
                 $i = 0;
-                while (isset($row[$i]) && !empty($row[$i]['image_url'])) {
+                while (isset($row[$i])) {
                     $row[$i]['description'] = mb_convert_encoding($row[$i]['description'], 'UTF-8', 'UTF-8');
                     if (!empty($row[$i]['image_url']) || isset($row[$i]['image_url'])) {
                         $row[$i]['image_url'] = $this->imagePath['gods'] . $row[$i]['image_url'];

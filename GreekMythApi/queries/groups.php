@@ -170,7 +170,7 @@ class Groups extends Api {
         $imageUrl = $this->getGroupImageUrl($id);
         if ($this->deleteGroupById($id)) {
             if (!empty($imageUrl)) {
-                unlink($this->imagePath['gods'] . $imageUrl);
+                unlink($this->imageConfig['gods'] . $imageUrl);
             }
             return $this->deletedResource();
         } else {
@@ -227,7 +227,7 @@ class Groups extends Api {
 
         // Function to create greek or group image
         private function createImage($image = null) : ?string {
-            if($image === null) {
+            if($image === null || empty($image) || $image === "") {
                 return null;
             }
 

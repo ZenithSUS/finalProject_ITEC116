@@ -42,7 +42,7 @@ if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
         echo $groups->getAllGroups($limit, $offset);
     }
 
-    if($requestMethod == "POST" && isset($_GET['id']) && !isset($_POST['type'])){
+    if($requestMethod == "POST" && isset($_GET['id']) && (isset($_POST['type']) && $_POST['type'] === "enable" || $_POST['type'] === "disable")){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         $type = $_POST['type'] ?? null;
         if(isset($id) && isset($type)){
