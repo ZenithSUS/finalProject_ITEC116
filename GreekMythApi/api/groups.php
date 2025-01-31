@@ -58,9 +58,16 @@ if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
     }
 
     if($requestMethod == "GET"){
-        $id = isset($_GET['id']) ? htmlentities($_GET['id']) : "";
-        if(isset($id)){
-            echo $groups->getGroup($id);
+        $id = isset($_GET['id']) ? strval(htmlentities($_GET['id'])) : "";
+        $type = isset($_GET['type']) ? htmlentities($_GET['type']) : null;
+        if (isset($id) && isset($type)){
+            if($type === "getGroup"){
+                echo $groups->getGroup($id);
+            }
+            if($type === "getGroups") {
+                echo $groups->getUserGroups($id);
+            }
+
         } else {
             $response = array(
                 "status" => 400,

@@ -34,14 +34,14 @@ if($requestMethod == "OPTIONS"){
 }
 
 if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
-    if($requestMethod == "POST" && !isset($_GET['id'])){
+    if($requestMethod == "POST" && !isset($_GET['id']) && !isset($_POST['type'])){
         $limit = isset($_GET['limit']) && $_GET['limit'] !== null ? 10 : 0;
         $page = isset($_GET['page']) ? $_GET['page'] : 1; 
         $offset = ($page - 1) * $limit;
         echo $posts->getAllPosts($limit, $offset);
     }
     
-    if($requestMethod == "POST" && isset($_GET['id'])){
+    if($requestMethod == "POST" && isset($_GET['id']) && !isset($_POST['type'])){
         $type = isset($_POST['type']) ? htmlentities($_POST['type']) : null;
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         if(isset($id) && isset($type)){
@@ -54,6 +54,14 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
             header("HTTP/1.1 400 Bad Request");
             echo json_encode($response);
         }
+    }
+
+    if($requestMethod == "POST" && !isset($_GET['id']) && isset($_POST['type'])){
+        $userId = isset($_POST['user_id']) ? htmlentities($_POST['user_id']) : "";
+        $greekId = isset($_POST['greek_id']) ? htmlentities($_POST['greek_id']) : "";
+        $title = isset($_POST['title']) ? htmlentities($_POST['title']) : null;
+        $content = isset($_POST['content']) ? htmlentities($_POST['content']) : null;
+        echo $posts->createPost($userId, $greekId, $title, $content);
     }
 
     if($requestMethod == "GET"){

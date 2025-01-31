@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = 'navigate/groups.html';
     }
 
-    const group = await getRequest(groups_url, group_id, token);
+    const group = await getRequest(groups_url, group_id, token, 'getGroup');
 
     if(group && group.status < 300){
         console.log(group);

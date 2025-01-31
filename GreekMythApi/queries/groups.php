@@ -36,6 +36,26 @@ class Groups extends Api {
         return $this->notFound();     
     }
 
+    public function getUserGroups(string $id) : string {
+        $sql = "SELECT user_groups.greek_id, greeks.name 
+        FROM user_groups 
+        JOIN greeks ON user_groups.greek_id = greeks.greek_id
+        WHERE user_id = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt){
+            return $this->queryFailed();
+        }
+    
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            return $this->Fetched($result, "groups");
+        }
+        return $this->notFound();
+    }
+
     private function BuildGroupsQuery(string $id = null, int $limit = 0, int $offset = 0) : string {
         if(isset($id) && $id !== null) {
             return "SELECT greeks.*, 

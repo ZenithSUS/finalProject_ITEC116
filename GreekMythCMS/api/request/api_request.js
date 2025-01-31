@@ -1,7 +1,7 @@
 // Get Request
-const getRequest = async (url, value, token) => {
+const getRequest = async (url, value, token, type = null) => {
     try {
-        const response = await fetch(`${url}?id=${value}`, {
+        const response = await fetch(`${url}?id=${value}&type=${type}`, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json',
@@ -54,6 +54,7 @@ const postRequest = async (url, token) => {
     });
 
     const data = await response.json();
+    return data;
 }
 
 // Delete Request 

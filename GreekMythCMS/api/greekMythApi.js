@@ -497,6 +497,7 @@ const postDisplayData = (posts, page = currentPage) => {
       postTableData(postData);
       
       document.querySelector('.pagination-container').style.display = 'flex';
+      document.querySelector('.data-options').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-posts')
       paginationContainer.innerHTML = '';
 

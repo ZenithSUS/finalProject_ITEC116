@@ -3,6 +3,8 @@ require_once('../api/apiStatus.php');
 
 class Posts extends Api {
 
+    protected $errors = array();
+
     public function __construct(){
         $this->conn = $this->connect();
     }
@@ -108,6 +110,41 @@ class Posts extends Api {
         return 0;
     }
 
+    public function createPost(?string $userId = null, ?string $greekId, ?string $title = null, ?string $content) : string {
+        $sql = "INSERT INTO posts (post_id, author, greek_group, title, content) VALUES (UUID(), ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+
+        if(empty($title) || $title === null || $title === "") {
+            $this->errors['titleCreate'] = "Please enter a title";
+        }
+
+        if(empty($content) || $content === null || $content === "") {
+            $this->errors['contentCreate'] = "Please enter content";
+        }
+
+        if(empty($userId) || $userId === null || $userId === "") {
+            $this->errors['usernameCreate'] = "Please select a user";
+        }
+
+        if(empty($greekId) || $greekId === null || $greekId === "") {
+            $this->errors['groupCreate'] = "Please select a greek group";
+        }
+
+        if(!empty($this->errors)) {
+            return $this->queryFailed("Create", $this->errors);
+        }
+
+        if(isset($userId) && $userId !== null && isset($greekId) && $greekId !== null) {
+            $stmt->bind_param('ssss', $userId, $greekId, $title, $content);
+        }
+
+        if(!$stmt) {
+            return $this->queryFailed();
+        }
+
+        $stmt->execute();
+        return $stmt->affected_rows > 0 ? $this->created() : $this->queryFailed();
+    }
 
 }
 ?>

@@ -4,14 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/finalProject_ITEC116/GreekMythCMS/">
     <link rel="icon" href="src/images/logo_transparent.png">
-    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="styles/posts.css">
-    <link rel="stylesheet" href="styles/table.css">
+    <link rel="stylesheet" href="global.css">
+    <title>Create Post</title>
     <script type="text/javascript" src="api/greekmythApi.js" defer></script>
     <script type="text/javascript" src="theme.js" defer></script>
-    <script type="text/javascript" src="components/notification.js" defer></script>
     <script type="text/javascript" src="api/request/api_request.js" defer></script>
-    <title>Posts</title>
+    <script type="text/javascript" src="api/posts/create_post.js" defer></script>
 </head>
 <body>
     <header>
@@ -42,8 +41,6 @@
     </nav>
 
     <main>
-        <h1 class="title">Posts</h1>
-
         <div class="modal" id="modal">
             <div class="modal-content">
                 <div class="close-container">
@@ -65,16 +62,6 @@
                 <div class="clearfix">
                     <button type="button" id="confirmbtn" class="confirmbtn">Confirm</button>
                     <button type="button" id="cancelbtn" class="cancelbtn">Cancel</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-change" id="modal-change">
-            <div class="modal-content">
-                <h2 id="confirm-message"></h2>
-                <div class="clearfix">
-                    <button type="button" id="confirmchangebtn" class="confirmbtn">Confirm</button>
-                    <button type="button" id="cancelchangebtn" class="cancelbtn">Cancel</button>
                 </div>
             </div>
         </div>
@@ -105,42 +92,41 @@
             </form>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Date</th>
-                    <th>Group Page</th>
-                    <th>Status</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="width: 100%;" colspan="8"><h1>Loading...</h1></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="pagination-container" style="display: none;">
-            <div class="pagination">
-                <div id="pagination-number"></div>
-                <div class="pagination-posts"></div>
-            </div>
+        <div class="form-container">
+            <form class="postForm-create" id="postForm"> 
+            <h1>Create Post</h1>
+                <div class="formInput-container">
+                    <div class="input-field">
+                        <label for="usernameCreate">Username</label> 
+                        <select name="usernameCreate" id="usernameCreate">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label for="titleCreate">Title</label> 
+                        <input type="text" name="titleCreate" id="titleCreate" placeholder="Title"> 
+                    </div>
+                    <div class="input-field">
+                        <label for="contentCreate">Content</label> 
+                        <textarea name="contentCreate" id="contentCreate" cols="30" rows="5" placeholder="Say about the content..."></textarea> 
+                    </div>
+                    <div class="input-field">
+                        <label for="groupCreate">Greek Page</label>
+                        <select name="groupCreate" id="groupCreate">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="edit-options-container">
+                        <div class="edit-options">
+                            <button type="button" id="Create">Create Post</button> 
+                            <button type="button" id="CancelCreate">Cancel</button>
+                        </div>
+                    </div>
+                    <span id="status" name="status"></span>
+                </div>
+            </form>
         </div>
-
-        <div class="data-options">
-            <button type="button" id="createData" onclick="window.location.href='admin/posts/create_post.html'">Create Data</button> 
-        </div>
-
-        <div class="notification-modal" id="notification-modal">
-            <div class="modal-content" id="modal-content"></div>
-        </div>
-        
     </main>
-
     <script type="text/javascript" src="api/auth/logout.js" defer></script>
     <script type="text/javascript" src="api/admin/delete_account.js" defer></script>
     <script type="text/javascript" src="api/field_check/greekMythApiFieldErrors.js" defer></script>

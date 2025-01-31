@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const form = document.querySelector('.form-container form');
     const createButton = document.querySelector('#Create');
-    const cancelButton = document.querySelector('#Cancel');
+    const cancelButton = document.querySelector('#CancelCreate');
 
-        createButton.addEventListener('click', async(e) => {
+        createButton.addEventListener('click', async (e) => {
             e.preventDefault();
             const username = santizeInput(form.usernameCreate.value) ? santizeInput(form.usernameCreate.value) : "";
             const email = santizeInput(form.emailCreate.value) ? santizeInput(form.emailCreate.value) : "";
