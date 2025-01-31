@@ -139,6 +139,66 @@ class Users extends Api {
         return 0;
     }
 
+    public function createUser(?string $username = null, ?string $email = null, ?string $password = null, ?string $confirmPassword = null, $image = null, ?string $bio = null, ?string $type = null) : string {
+        $this->checkFieldsCreate($username, $email, $type);
+        $this->checkPasswordFieldsCreate($password, $confirmPassword);
+
+        // Check if username exists
+        $sql = $this->getUsernameQuery2();
+        $exists = $this->existsUsernameOrEmailInCreate($sql, $username);
+
+        if($exists){
+            $this->errors['usernameCreate'] = "Username already exists";
+        }
+
+        // Check if email exists
+        $sql = $this->getEmailQuery2();
+        $exists = $this->existsUsernameOrEmailInCreate($sql, $email);
+
+        if($exists){
+            $this->errors['emailCreate'] = "Email already exists";
+        }
+
+        if(!empty($this->errors)){
+            return $this->queryFailed("Create", $this->errors);
+        }
+        $image_url = $this->createImage($image);   
+        return $this->createUserQuery($username, $email, $password, $bio, $image_url);
+    }
+
+    private function createUserQuery(string $username, string $email, string $password, ?string $bio, ?string $image_url = null) : string {
+        $sql = "INSERT INTO users (user_id, username, email, password, token, bio, profile_pic) VALUES (UUID(), ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt){
+            return $this->queryFailed();
+        }
+        
+        $token = bin2hex(random_bytes(16));
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt->bind_param("ssssss", $username, $email, $password, $token, $bio, $image_url);
+        $stmt->execute();
+
+        // Get user id
+        $sql = "SELECT user_id FROM users WHERE email = ? OR username = ? LIMIT 1"; 
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt){
+            return $this->queryFailed();
+        }
+
+        $stmt->bind_param("ss", $email, $username);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        // Get user id
+        $user_id = $row['user_id'];
+
+        $this->insertDefaultPages($user_id);
+        return $stmt->affected_rows > 0 ? $this->created() : $this->queryFailed();
+    }
+
     // Function to edit user information
     public function editUser(string $id, ?string $username = null, ?string $email = null, string $type, $image = null) : string {
         $this->checkFields($username, $email, $type);
@@ -301,6 +361,22 @@ class Users extends Api {
         return $stmt->affected_rows > 0 ? $this->editedResource() : $this->queryFailed();
     }
 
+    // Function to insert default group pages on user creation in database
+    private function insertDefaultPages($user_id) {
+        $sql = "SELECT * FROM greeks WHERE creator = 'Default'";
+        $result = $this->conn->query($sql);
+    
+        if($result !== false && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $sql = "INSERT INTO user_groups (id, user_id, greek_id) VALUES (UUID(), ?, ?)";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->bind_param("ss", $user_id, $row['greek_id']);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+    }
+
     // Function to get user info query based on type
     private function getUserInfoQuery(string $type) : string {
         return $type === "user" ? "SELECT username, email FROM users WHERE user_id = ?" : "SELECT username, email FROM admin_users WHERE id = ?";
@@ -311,9 +387,33 @@ class Users extends Api {
         return $type === "user" ? "SELECT username FROM users WHERE user_id != ? AND username = ?" : "SELECT username FROM admin_users WHERE id != ? AND username = ?";
     }
 
+    // Function to get username query in creating user
+    private function getUsernameQuery2() : string {
+        return "SELECT username FROM users WHERE username = ?";
+    }
+
     // Function to get email query based on type
     private function getEmailQuery(string $type) : string {
         return $type === "user" ? "SELECT email FROM users WHERE user_id != ? AND email = ?" : "SELECT email FROM admin_users WHERE id != ? AND email = ?";
+    }
+
+    // Function to get email query in creating user
+    private function getEmailQuery2() : string {
+        return "SELECT email FROM users WHERE email = ?";
+    }
+
+    // Function to check if username or email exists in creating user
+    private function existsUsernameOrEmailInCreate(?string $sql = null, ?string $user = null) : bool {
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt){
+            return false;
+        }
+
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0 ? true : false;
     }
 
     // Function to check if username or email exists
@@ -371,6 +471,50 @@ class Users extends Api {
         // Check if email is valid
         } else if (!$this->checkEmail($email)){
             $this->errors['emailEdit'] = "Please enter a valid email";
+        }
+    }
+
+    // Function to check fields for username and email in creating user
+    private function checkFieldsCreate(?string $username = null, ?string $email = null, string $type) : void {
+        // Check if username is not empty
+        if (empty($username) || $username === null || $username === "") {
+            $this->errors['usernameCreate'] = "Please fill the username";
+        } else if ($this->validateUsername($this->checkUsername($username, $type))) {
+            foreach($this->checkUsername($username, $type) as $type => $hasType){
+                if($hasType) $this->errors['usernameValid'][$type] = $type . " is required";
+            }
+        } 
+        // Check if email is not empty
+        if (empty($email) || $email === null || $email === "") {
+            $this->errors['emailCreate'] = "Please fill the email";
+        // Check if email is valid
+        } else if (!$this->checkEmail($email)){
+            $this->errors['emailCreate'] = "Please enter a valid email";
+        }
+    }
+
+    // Function to check password fields for creating user
+    private function checkPasswordFieldsCreate(?string $newPassword = null, ?string $confirmNewPassword = null) : void {
+        // Check if new password is empty 
+        if(empty($newPassword) && $newPassword === null) {
+            $this->errors['passwordCreate'] = "Please fill the password";
+        } 
+    
+        // Validate new password
+        if($newPassword !== null && $this->validateAdminPassword($this->checkAdminPassword($newPassword))) {
+            foreach($this->checkAdminPassword($newPassword) as $type => $hasType){
+                if(!$hasType) $this->errors['passwordValid'][$type] = $type . " is required";
+            }
+        }
+    
+        // Check if new confirm password is empty
+        if(empty($confirmNewPassword) && $confirmNewPassword === null) {
+            $this->errors['confirmpasswordCreate'] = "Please fill the confirm password";
+        }
+    
+        // Check if new password and confirm password match
+        if($confirmNewPassword !== null && $confirmNewPassword !== $newPassword) {
+            $this->errors['confirmpasswordCreate'] = "Password doesn't match";
         }
     }
 
@@ -519,7 +663,7 @@ class Users extends Api {
        ];
     }
 
-    // Function to change user image
+    // Function to change admin image
     private function changeImage(string $id, $image = null) : bool {
         if($image === null){
             return false;
@@ -591,6 +735,44 @@ class Users extends Api {
                 unlink($this->imageConfig['admins'] . $image);
             } 
         }
+    }
+
+    // Function to create users image
+    private function createImage($image = null) : ?string {
+
+        $fileName = $image['name'];
+        $fileSize = $image['size'];
+        $fileTmpName = $image['tmp_name'];
+        $fileError = $image['error'];
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+        $targetDirectory = $this->imageConfig['users'] . $fileNameNew; 
+        
+        $allowed = array("jpeg", "png", "jpg");
+    
+        if ($fileError !== UPLOAD_ERR_OK) {
+            $this->errors['imageCreate'] = 'Error Uploading Image!';
+        }
+    
+        if (!in_array($fileActualExt, $allowed)) {
+            $this->errors['imageCreate'] = 'Invalid Extension!';
+        } 
+    
+        if ($fileSize > 5000000) {
+            $this->errors['imageCreate'] = 'Image size too big!';
+        }
+
+        if(!empty($this->errors)){
+            return null;
+        }
+
+        if(!move_uploaded_file($fileTmpName, $targetDirectory)) {
+            $this->errors['imageCreate'] = 'Failed to upload image';
+            return null;
+        }
+
+        return $image_url = $fileNameNew;
     }
 }
 ?>

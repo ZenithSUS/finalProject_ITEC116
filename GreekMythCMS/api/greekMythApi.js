@@ -84,7 +84,6 @@ const fetchApi = async (url, page = 1, limit = 10) => {
     });
 
     const data = await response.json();
-    console.log(data)
     return data;
 }
 
@@ -320,7 +319,9 @@ const userDisplayData = (user, page = currentPage) =>{
 
       userTableData(user);
 
-      // Add pagination controls 
+      // Add pagination controls
+      document.querySelector('.pagination-container').style.display = 'flex';
+      document.querySelector('.data-options').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-users'); 
       paginationContainer.innerHTML = ''; // Clear previous pagination
 
@@ -490,14 +491,12 @@ const postDisplayData = (posts, page = currentPage) => {
   }
 
   if(posts && posts.status < 300){
-      if (posts.data.length === 0) {
-          handleNoData();
-          return;
-      }
+     
 
       const postData = sortPosts(posts);
       postTableData(postData);
-
+      
+      document.querySelector('.pagination-container').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-posts')
       paginationContainer.innerHTML = '';
 
@@ -670,7 +669,8 @@ const groupDisplayData = (groups, page = currentPage) => {
       const groupdata = sortGroups(groups)
       groupsTableData(groupdata)
 
-      // Add pagination controls 
+      // Add pagination controls
+      document.querySelector('.pagination-container').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-groups'); 
       paginationContainer.innerHTML = ''; // Clear previous pagination
 
@@ -852,7 +852,8 @@ const commentDisplayData = (comments, page = currentPage) => {
 
       commentsTableData(sortedComments(comments))
 
-      // Add pagination controls 
+      // Add pagination controls
+      document.querySelector('.pagination-container').style.display = 'flex'; 
       const paginationContainer = document.querySelector('.pagination-comments'); 
       paginationContainer.innerHTML = ''; // Clear previous pagination
 

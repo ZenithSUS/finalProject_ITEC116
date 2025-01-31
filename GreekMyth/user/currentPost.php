@@ -198,7 +198,7 @@
                 <!-- Heading or Title -->
                 <h2 id='commentTitle'>What are your thoughts</h2>
                 <!-- Comment Form -->
-                <form action='../actions/comment_act.php?post_id=<?php echo $postId ?>' method='post'>
+                <form id='commentForm' action='../actions/comment_act.php?post_id=<?php echo $postId ?>' method='post'>
                 <!-- Comment Field -->
                 <textarea name='comment' id='comment' cols='30' rows='10'></textarea>
                 <!-- Submit Button -->
@@ -243,10 +243,8 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../scripts/disableBtns.js"></script>
     <script src="../scripts/showReply.js"></script>
     <script src="../scripts/search.js"></script>
     <script src="../scripts/burgerMenu.js"></script>
-
 </body>
 </html>

@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Greek</title>
+  <title>GreekMyth</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vanilla-framework/3.0.0/vanilla.min.css">
   <link rel="stylesheet" href="styles/greek.css">
   <link rel="icon" href="img/misc/logo_transparent.png">

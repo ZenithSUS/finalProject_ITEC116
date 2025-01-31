@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         modalMessage.textContent = 'Are you sure do you want do delete this user?';
 
         confirmBtn.addEventListener('click', async () => {
-            const response = await deleteRequest(users_url, user_id, token);
+            const response = await deleteRequest(users_url, user_id, "user", token);
             if(response.status < 300) {
                 console.log(response)
                 window.location.href = `navigate/users.html?updated=${true}&message=${response.message}`;

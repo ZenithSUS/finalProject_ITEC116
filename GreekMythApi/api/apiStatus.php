@@ -30,6 +30,13 @@ class Api extends Database {
                 "message" => "Unprocessable Content",
             );
             header("HTTP/1.1 422 Unprocessable Content");
+        } else if ($type == "Create"){
+            $response = array(
+                "status" => 422,
+                "message" => "Unprocessable Content",
+                "error" => $errors
+            );
+            header("HTTP/1.1 422 Unprocessable Content");
         } else {
             $response = array(
                 "status" => 500,

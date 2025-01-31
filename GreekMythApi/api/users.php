@@ -36,17 +36,17 @@ if($requestMethod == "OPTIONS") {
 
 if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
 
-    if($requestMethod == "POST" && !isset($_GET['id'])){
+    if($requestMethod == "POST" && !isset($_GET['id']) && !isset($_POST['type'])){
         $limit = isset($_GET['limit']) && $_GET['limit'] !== null ? 10 : 0;
         $page = isset($_GET['page']) ? $_GET['page'] : 1; 
         $offset = ($page - 1) * $limit;
         echo $users->getAllUsers($limit, $offset);
     }
 
-    if($requestMethod == "POST" && isset($_GET['id'])){
+    if($requestMethod == "POST" && isset($_GET['id']) && isset($_POST['type'])){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         $type = htmlentities(isset($_POST['type'])) ? htmlentities($_POST['type']) : null;
-        
+    
         if(isset($id) && $id !== null && ($type === "user" || $type === "admin")){
             $username = strlen(htmlentities($_POST['usernameEdit'])) > 0 ? htmlentities($_POST['usernameEdit']) : null;
             $email = strlen(htmlentities($_POST['emailEdit'])) > 0 ? htmlentities($_POST['emailEdit']) : null;
@@ -86,6 +86,22 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
             header("HTTP/1.1 400 Bad Request");
             echo json_encode($response);
         }
+    }
+
+    if($requestMethod == "POST" && !isset($_GET['id']) && isset($_POST['type'])){
+        $type = htmlentities(isset($_POST['type'])) ? htmlentities($_POST['type']) : null;
+        
+        if(!isset($id) && $type === "createUser"){
+        
+            $username = strlen(htmlentities($_POST['username'])) > 0 ? htmlentities($_POST['username']) : null;
+            $email = strlen(htmlentities($_POST['email'])) > 0 ? htmlentities($_POST['email']) : null;
+            $password = strlen(htmlentities($_POST['password'])) > 0 ? htmlentities($_POST['password']) : null;
+            $confirmPassword = strlen(htmlentities($_POST['confirm_password'])) > 0 ? htmlentities($_POST['confirm_password']) : null;
+            $image = isset($_FILES['image']) ? $_FILES['image'] : null;
+            $bio = strlen(htmlentities($_POST['bio'])) > 0 ? htmlentities($_POST['bio']) : null;
+            echo $users->createUser($username, $email, $password, $confirmPassword, $image, $bio, $type);
+        }
+        
     }
 
     if($requestMethod == "GET") {
@@ -137,6 +153,7 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
         $response = array(
             "status" => 401,
             "message" => "Token not Verified",
+            "data" => $token
         );
         header("HTTP/1.1 401 Unauthorized");
         echo json_encode($response);

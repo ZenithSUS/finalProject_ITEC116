@@ -74,3 +74,22 @@ const deleteRequest = async (url, userId, type, token) => {
         console.error('Error Deleting data:', error);
     }
 }
+
+const createRequest = async (url, formData, token) => {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            body: formData
+        });
+    
+        const data = await response.json();
+        if(data){
+            return data;
+        }
+    } catch (error) {
+        console.error('Error Creating data:', error);
+    }
+}
