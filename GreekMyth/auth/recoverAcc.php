@@ -16,6 +16,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../styles/forgot.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>Account Recovery</title>
 </head>

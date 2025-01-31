@@ -15,6 +15,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../styles/login_register.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>Register</title>
 </head>

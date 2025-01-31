@@ -669,10 +669,10 @@ class Users extends Api {
             return false;
         }
 
-        $fileName = $image['name'];
-        $fileSize = $image['size'];
-        $fileTmpName = $image['tmp_name'];
-        $fileError = $image['error'];
+        $fileName = $image['name'] ?? null;
+        $fileSize = $image['size'] ?? null;
+        $fileTmpName = $image['tmp_name'] ?? null;
+        $fileError = $image['error'] ?? null;
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
         $fileNameNew = uniqid('', true) . "." . $fileActualExt;
@@ -740,10 +740,10 @@ class Users extends Api {
     // Function to create users image
     private function createImage($image = null) : ?string {
 
-        $fileName = $image['name'];
-        $fileSize = $image['size'];
-        $fileTmpName = $image['tmp_name'];
-        $fileError = $image['error'];
+        $fileName = $image['name'] ?? null;
+        $fileSize = $image['size'] ?? null;
+        $fileTmpName = $image['tmp_name'] ?? null;
+        $fileError = $image['error'] ?? null;
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
         $fileNameNew = uniqid('', true) . "." . $fileActualExt;

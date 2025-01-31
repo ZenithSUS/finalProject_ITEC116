@@ -19,6 +19,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="../styles/uploadProfile.css">
+    <link rel="icon" href="../img/misc/logo_transparent.png">
     <!-- Title -->
     <title>Upload Profile Picture</title>
 </head>
