@@ -25,23 +25,6 @@
         border-radius: 20px;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
 
-        .gridBox {
-            display: flex;
-            justify-content: space-evenly;
-            margin-top: 2rem;
-            width: 100%;
-
-            .userInfo {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                .userData {
-                    color: var(--dark-color);
-                }
-            }
-        }
-
         img {
             height: 150px;
             width: 150px;

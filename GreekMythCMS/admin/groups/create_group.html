@@ -4,14 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="/finalProject_ITEC116/GreekMythCMS/">
     <link rel="icon" href="src/images/logo_transparent.png">
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="styles/table.css">
     <link rel="stylesheet" href="styles/groups.css">
+    <link rel="stylesheet" href="global.css">
+    <title>Create Group</title>
     <script type="text/javascript" src="api/greekmythApi.js" defer></script>
     <script type="text/javascript" src="theme.js" defer></script>
-    <script type="text/javascript" src="components/notification.js" defer></script>
     <script type="text/javascript" src="api/request/api_request.js" defer></script>
-    <title>Groups</title>
+    <script type="text/javascript" src="api/groups/create_group.js" defer></script>
 </head>
 <body>
     <header>
@@ -40,9 +39,8 @@
                 <button value="Logout" id="Process">Logout</button>
             </form>
     </nav>
-    <main>
-        <h1 class="title">Groups</h1>
 
+    <main>
         <div class="modal" id="modal">
             <div class="modal-content">
                 <div class="close-container">
@@ -64,16 +62,6 @@
                 <div class="clearfix">
                     <button type="button" id="confirmbtn" class="confirmbtn">Confirm</button>
                     <button type="button" id="cancelbtn" class="cancelbtn">Cancel</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-change" id="modal-change">
-            <div class="modal-content">
-                <h2 id="confirm-message"></h2>
-                <div class="clearfix">
-                    <button type="button" id="confirmchangebtn" class="confirmbtn">Confirm</button>
-                    <button type="button" id="cancelchangebtn" class="cancelbtn">Cancel</button>
                 </div>
             </div>
         </div>
@@ -104,42 +92,39 @@
             </form>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Creator</th>
-                    <th>Image</th>
-                    <th>Status</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="width: 100%;" colspan="6"><h1>Loading...</h1></td>
-                </tr>
-            </tbody>
-        </table>
-
-
-        <div class="pagination-container" style="display: none;">
-            <div class="pagination">
-                <div id="pagination-number"></div>
-                <div class="pagination-groups"></div>
-            </div>
+        <div class="form-container">
+            <form class="groupForm-create" id="groupForm"> 
+            <h1>Create Group</h1>
+                <div class="formInput-container">
+                    <div class="input-field">
+                        <label for="creatorCreate">Creator</label> 
+                        <select name="creatorCreate" id="creatorCreate">
+                            <option value="">Select</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label for="nameCreate">Name</label> 
+                        <input type="text" name="nameCreate" id="nameCreate" placeholder="Name"> 
+                    </div>
+                    <div class="input-field">
+                        <label for="imageCreate">Group Image</label> 
+                        <input type="file" name="imageCreate" id="imageCreate" placeholder="Profile"> 
+                    </div>
+                    <div class="input-field">
+                        <label for="descriptionCreate">Description</label> 
+                        <textarea name="descriptionCreate" id="descriptionCreate" cols="30" rows="5" placeholder="Description of the group..."></textarea>
+                    </div>
+                    <div class="edit-options-container">
+                        <div class="edit-options">
+                            <button type="button" id="Create">Create Post</button> 
+                            <button type="button" id="CancelCreate">Cancel</button>
+                        </div>
+                    </div>
+                    <span id="status" name="status"></span>
+                </div>
+            </form>
         </div>
-
-        <div class="data-options">
-            <button type="button" id="createData" onclick="window.location.href='admin/groups/create_group.html'">Create Data</button> 
-        </div>
-
-        <div class="notification-modal" id="notification-modal">
-            <div class="modal-content" id="modal-content"></div>
-        </div>
-
     </main>
-    
     <script type="text/javascript" src="api/auth/logout.js" defer></script>
     <script type="text/javascript" src="api/admin/delete_account.js" defer></script>
     <script type="text/javascript" src="api/field_check/greekMythApiFieldErrors.js" defer></script>

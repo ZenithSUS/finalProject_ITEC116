@@ -26,7 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('totalGroups').innerHTML = data.totalGroups;
         document.getElementById('totalFriends').innerHTML = data.totalFriends;
         // Create the pie chart
-        createPieChart(data)
+        if(data.totalPosts == 0 && data.totalComments == 0 && data.totalGroups == 0 && data.totalFriends == 0) {
+            createPieChart(data)
+        } else {
+            document.querySelector('.pie-chart').textContent = 'No data available';
+        }
     } else {
         console.error('Fetch failed status:', user.message);
     }

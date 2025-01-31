@@ -672,6 +672,7 @@ const groupDisplayData = (groups, page = currentPage) => {
 
       // Add pagination controls
       document.querySelector('.pagination-container').style.display = 'flex';
+      document.querySelector('.data-options').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-groups'); 
       paginationContainer.innerHTML = ''; // Clear previous pagination
 

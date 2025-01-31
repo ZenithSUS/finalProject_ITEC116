@@ -35,18 +35,39 @@ if($requestMethod == "OPTIONS"){
 }
 
 if($TokenAuth->tokenVerified($token) && $TokenAuth->tokenExists($token)){
-    if($requestMethod == "POST" && !isset($_GET['id'])){
+    if($requestMethod == "POST" && !isset($_GET['id']) && !isset($_POST['type'])){
         $limit = isset($_GET['limit']) && $_GET['limit'] !== null ? 10 : 0;
         $page = isset($_GET['page']) ? $_GET['page'] : 1; 
         $offset = ($page - 1) * $limit;
         echo $groups->getAllGroups($limit, $offset);
     }
 
-    if($requestMethod == "POST" && isset($_GET['id'])){
+    if($requestMethod == "POST" && isset($_GET['id']) && !isset($_POST['type'])){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         $type = $_POST['type'] ?? null;
         if(isset($id) && isset($type)){
             echo $groups->changePermissionGroup($id, $type);
+        } else {
+            $response = array(
+                "status" => 400,
+                "message" => "Bad request"
+            );
+            header("HTTP/1.1 400 Bad Request");
+            echo json_encode($response);
+        }
+    }
+
+    if($requestMethod == "POST" && !isset($_GET['id']) && isset($_POST['type'])){
+        $creator = isset($_POST['creator']) ? strval(htmlentities($_POST['creator'])) : "";
+        $name = isset($_POST['name']) ? htmlentities(($_POST['name'])) : "";
+        $description = isset($_POST['description']) ? htmlentities($_POST['description']) : "";
+        $image = isset($_FILES['image']) ? $_FILES['image'] : null;
+        $type = $_POST['type'] ?? null;
+        
+        if(isset($type)){
+            if($type === "createGroup") {
+                echo $groups->createGroup($creator, $name, $description, $image);
+            } 
         } else {
             $response = array(
                 "status" => 400,

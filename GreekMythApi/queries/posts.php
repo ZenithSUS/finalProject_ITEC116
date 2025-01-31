@@ -113,7 +113,7 @@ class Posts extends Api {
     public function createPost(?string $userId = null, ?string $greekId, ?string $title = null, ?string $content) : string {
         $sql = "INSERT INTO posts (post_id, author, greek_group, title, content) VALUES (UUID(), ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
-
+        
         if(empty($title) || $title === null || $title === "") {
             $this->errors['titleCreate'] = "Please enter a title";
         }

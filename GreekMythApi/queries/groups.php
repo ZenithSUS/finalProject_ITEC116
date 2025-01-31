@@ -1,6 +1,8 @@
 <?php
 require_once('../api/apiStatus.php');
 class Groups extends Api {
+    protected $errors = array();
+
     public function __construct(){
         $this->conn = $this->connect();
     }
@@ -97,7 +99,60 @@ class Groups extends Api {
             GROUP BY greeks.greek_id";
     }
 
+    // Function to create a new group
+    public function createGroup(?string $creator = null, ?string $name = null, ?string $description, $image = null) : string {
+        $creator = isset($creator) ? strval(htmlentities($creator)) : "";
+        $sql = $this->createGroupQuery();
+        $stmt = $this->conn->prepare($sql);
+        
+        if(!$stmt) {
+            return $this->queryFailed();
+        }
+        
+        if(empty($creator) || $creator === null || $creator === "") {
+            $this->errors['creatorCreate'] = "Please select a creator";
+        }
 
+        if(empty($name) || $name === null || $name === "") {
+            $this->errors['nameCreate'] = "Please enter a name";
+        }
+
+        if(empty($description) || $description === null || $description === "") {
+            $this->errors['descriptionCreate'] = "Please enter a description";
+        }
+
+        if(!empty($this->errors)){
+            return $this->queryFailed('Create', $this->errors);
+        }
+
+        if(empty($this->errors)) {
+            $image_url = $this->createImage($image);
+        }
+
+        if(isset($creator) && $creator !== null && isset($name) && $name !== null && isset($description) && $description !== null) {
+            $stmt->bind_param('ssss', $name, $description, $image_url, $creator);
+        }
+
+        if(!$stmt->execute()) {
+            return $this->queryFailed();
+        }
+
+        // Get the ID of the newly created group
+        $sql = "SELECT greek_id FROM greeks WHERE name = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $name = $row['greek_id'];
+
+        // Insert the user group into the database
+        $sql = "INSERT INTO user_groups (id, user_id, greek_id) VALUES (UUID(), ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('ss', $creator, $name);
+        
+        return $stmt->execute() ? $this->created() : $this->queryFailed();
+    }
     
     public function changePermissionGroup(string $id, string $type) : string {
         $status = $type == "enable" ? 1 : 0;
@@ -141,6 +196,10 @@ class Groups extends Api {
         return 0;
     }
 
+    private function createGroupQuery() : string {
+        return "INSERT INTO greeks (greek_id, name, description, image_url, creator) VALUES (UUID(), ?, ?, ?, ?)";
+    }
+
     private function deleteGroupById(string $id): bool {
         $sql = "DELETE FROM greeks WHERE greek_id = ?";
         $stmt = $this->conn->prepare($sql);
@@ -165,5 +224,46 @@ class Groups extends Api {
         }
         return null;
     }
+
+        // Function to create greek or group image
+        private function createImage($image = null) : ?string {
+            if($image === null) {
+                return null;
+            }
+
+            $fileName = $image['name'] ?? null;
+            $fileSize = $image['size'] ?? null;
+            $fileTmpName = $image['tmp_name'] ?? null;
+            $fileError = $image['error'] ?? null;
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+            $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+            $targetDirectory = $this->imageConfig['gods'] . $fileNameNew; 
+            
+            $allowed = array("jpeg", "png", "jpg");
+        
+            if ($fileError !== UPLOAD_ERR_OK) {
+                $this->errors['imageCreate'] = 'Error Uploading Image!';
+            }
+        
+            if (!in_array($fileActualExt, $allowed)) {
+                $this->errors['imageCreate'] = 'Invalid Extension!';
+            } 
+        
+            if ($fileSize > 5000000) {
+                $this->errors['imageCreate'] = 'Image size too big!';
+            }
+    
+            if(!empty($this->errors)){
+                return null;
+            }
+    
+            if(!move_uploaded_file($fileTmpName, $targetDirectory)) {
+                $this->errors['imageCreate'] = 'Failed to upload image';
+                return null;
+            }
+    
+            return $image_url = $fileNameNew;
+        }
 }
 ?>
