@@ -413,7 +413,7 @@
         $sql = "SELECT *, greeks.name AS greek FROM posts 
         JOIN users ON posts.author = users.user_id 
         LEFT JOIN greeks ON posts.greek_group = greeks.greek_id
-        WHERE posts.post_id = '$postId'";
+        WHERE posts.post_id = '$postId' AND posts.status = 1";
         //Execute query
         $result = $conn->query($sql);
         //Check if post exists
