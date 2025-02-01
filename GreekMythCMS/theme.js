@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Icons in the dashbord
     const userIcon = document.querySelector('#user-icon');
-    console.log(userIcon);
     const postIcon = document.querySelector('#post-icon');
     const groupIcon = document.querySelector('#group-icon');
     const commentIcon = document.querySelector('#comment-icon');
