@@ -44,6 +44,13 @@
             deleteComment($conn, $commentId, $postId);
         }
 
+        // Check if all the forms are not submitted
+        if(!isset($_POST['commentForm']) && !isset($_POST['replyForm']) && !isset($_POST['deleteComment']) && isset($_POST['post_id'])) {
+            header("Location: ../user/currentPost.php?post_id=" . $_GET['post_id']);
+        } else {
+            header("Location: ../index.php");
+        }
+
     } else {
         header("Location: ../auth/login.php");
     }
