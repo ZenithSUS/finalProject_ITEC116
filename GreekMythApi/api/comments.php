@@ -36,14 +36,14 @@ if($requestMethod == "OPTIONS"){
 }
 
 if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
-    if($requestMethod == "POST"  && !isset($_GET['id'])){
+    if($requestMethod == "POST"  && !isset($_GET['id']) && !isset($_POST['type'])){
         $limit = isset($_GET['limit']) && $_GET['limit'] !== null ? 10 : 0;
         $page = isset($_GET['page']) ? $_GET['page'] : 1; 
         $offset = ($page - 1) * $limit;
         echo $commments->getAllComments($limit, $offset);
     }
 
-    if($requestMethod == "POST"  && isset($_GET['id']) && isset($_POST['type'])){
+    if($requestMethod == "POST"  && isset($_GET['id']) && (isset($_POST['type']) && $_POST['type'] === "enable" || $_POST['type'] === "disable")){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
         $type = isset($_POST['type']) ? htmlentities($_POST['type']) : null;
         if(isset($id) && isset($type)){
@@ -58,10 +58,24 @@ if($TokenAuth->tokenExists($token) && $TokenAuth->tokenVerified($token)){
         }
     }
 
+    if($requestMethod == "POST" && !isset($_GET['id']) && isset($_POST['type'])){
+
+        if(isset($_POST['type']) && $_POST['type'] === "createComment") {
+            $userId = isset($_POST['user_id']) ? htmlentities($_POST['user_id']) : "";
+            $postId = isset($_POST['post_id']) ? htmlentities($_POST['post_id']) : "";
+            $content = isset($_POST['content']) ? htmlentities($_POST['content']) : null;
+            $parentId = isset($_POST['parent_id']) ? htmlentities($_POST['parent_id']) : null;
+            echo $commments->createComment($userId, $postId, $content, $parentId);
+        }
+    }
+
     if($requestMethod == "GET"){
         $id = isset($_GET['id']) ? htmlentities($_GET['id']) : null;
-        if(isset($id)){
+        $type = isset($_GET['type']) ? htmlentities($_GET['type']) : null;
+        if(isset($id) && (isset($type) && $type === "getComment")){
             echo $commments->getComment($id);
+        } else if(isset($id) && isset($type) && $type == "getParentComments"){
+            echo $commments->getParentComments($id);
         } else {
             $response = array(
                 "status" => 400,

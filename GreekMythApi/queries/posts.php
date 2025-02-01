@@ -3,8 +3,6 @@ require_once('../api/apiStatus.php');
 
 class Posts extends Api {
 
-    protected $errors = array();
-
     public function __construct(){
         $this->conn = $this->connect();
     }
@@ -127,14 +125,14 @@ class Posts extends Api {
         }
 
         if(empty($greekId) || $greekId === null || $greekId === "") {
-            $this->errors['groupCreate'] = "Please select a greek group";
-        }
+            $greekId = null;
+        } 
 
         if(!empty($this->errors)) {
             return $this->queryFailed("Create", $this->errors);
         }
 
-        if(isset($userId) && $userId !== null && isset($greekId) && $greekId !== null) {
+        if(isset($userId) && $userId !== null) {
             $stmt->bind_param('ssss', $userId, $greekId, $title, $content);
         }
 

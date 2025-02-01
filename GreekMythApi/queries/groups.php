@@ -1,7 +1,6 @@
 <?php
 require_once('../api/apiStatus.php');
 class Groups extends Api {
-    protected $errors = array();
 
     public function __construct(){
         $this->conn = $this->connect();

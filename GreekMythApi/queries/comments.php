@@ -38,6 +38,63 @@ class Comments extends Api {
         return $this->notFound();   
     }
 
+    public function createComment(?string $userId = null, ?string $postId = null, string $content = null, ?string $parentId) : string {
+        $sql = $this->createCommentQuery();
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt) {
+            return $this->queryFailed();
+        }
+
+        if(empty($userId) || $userId === null || $userId === "") {
+            $this->errors['usernameCreate'] = "Please select a user";
+        }
+
+        if(empty($postId) || $postId === null || $postId === "") {
+            $this->errors['postTitleCreate'] = "Please select a post";   
+        }
+
+        if(empty($content) || $content === null || $content === "") {
+            $this->errors['contentCreate'] = "Please enter content";
+        }
+
+        if(empty($parentId) || $parentId === null || $parentId === "") {
+            $parentId = null;
+        }
+
+        if(!empty($this->errors)) {
+            return $this->queryFailed("Create", $this->errors);
+        }
+
+        if(!empty($userId) && !empty($postId) && !empty($content)) {
+            $commentId = uniqid();
+            $stmt->bind_param('sssss', $commentId, $userId, $postId, $content, $parentId);
+        }
+
+        $stmt->execute();
+        $status = $stmt->affected_rows > 0 ? $this->created() : $this->notFound();
+        return $status;
+    }
+
+    public function getParentComments(?string $postId) : string {
+        $sql = $this->getParentCommentsQuery($postId);
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt) {
+            return $this->queryFailed();
+        }
+
+        $stmt->bind_param('s', $postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $status = $result->num_rows > 0 ? $this->Fetched($result, "comments") : $this->notFound();
+        return $status;
+    }
+
+    public function createCommentQuery() : string {
+        return "INSERT INTO comments (comment_id, author, post_id, content, parent_comment) VALUES (?, ?, ?, ?, ?)";        
+    }
+
     public function changePermissionComment(string $id, string $type) : string {
         $sql = $this->changePermissionCommentQuery($type);
         $stmt = $this->conn->prepare($sql);
@@ -99,6 +156,13 @@ class Comments extends Api {
         LEFT JOIN Greeks ON
         greeks.greek_id = posts.greek_group";
         
+    }
+
+    private function getParentCommentsQuery(?string $commentId) : string {
+        return "SELECT comments.comment_id, comments.content, users.username
+        FROM Comments JOIN Users ON
+        comments.author = users.user_id
+        WHERE comments.post_id = ? AND comments.parent_comment IS NULL";
     }
 
     private function getTotalPageComment(int $limit) : int {

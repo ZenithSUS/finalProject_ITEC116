@@ -2,6 +2,7 @@
 require_once('../config.php');
 class Api extends Database {
     protected $conn;
+    protected $errors = array();
     protected $imagePath = [
         "default_users" => "/finalProject_ITEC116/GreekMyth/img/default.jpg",
         "default_gods" => "/finalProject_ITEC116/GreekMyth/img/hero.png",
@@ -9,7 +10,6 @@ class Api extends Database {
         "gods" => "/finalProject_ITEC116/GreekMyth/img/gods/",
         "users" => "/finalProject_ITEC116/GreekMyth/img/u/"
     ];
-
     protected $imageConfig = [
         "admins" => "C:/xampp/htdocs/finalProject_ITEC116/GreekMyth/img/admin/",
         "gods" => "C:/xampp/htdocs/finalProject_ITEC116/GreekMyth/img/gods/",
@@ -54,7 +54,7 @@ class Api extends Database {
             "status" => 404,
             "message" => "Not Found",
         );
-        header("HTTP/1.1 Data not Found");
+        header("HTTP/1.1 404 Data not Found");
         return json_encode($response);
     }
 

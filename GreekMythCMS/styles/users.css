@@ -316,6 +316,9 @@
             }
 
             .pie-chart {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 width: 340px;
                 height: 340px;
                 border-radius: 50%;

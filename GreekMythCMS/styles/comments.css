@@ -8,6 +8,86 @@
     width: 100%;
 }
 
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--light-color);
+        width: 100%;
+        max-width: 600px;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5), -4px -4px 4px rgba(0, 0, 0, 0.5);
+
+        img {
+            height: 150px;
+            width: 150px;
+            border-radius: 20px;
+            border: 2px solid var(--dark-color);
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0 10px 0;
+        }
+
+        label { 
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            border: 0.2rem solid var(--dark-color);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 0.5rem;
+            border: 0.2rem solid var(--dark-color);
+            resize: vertical;
+        }
+
+        .edit-options-container {
+            display: flex;
+            flex-direction: column;
+
+            .edit-options {
+                display: flex;
+                gap: 20px;
+                margin-top: 5px;
+    
+                button {
+                    width: fit-content;
+                    background-color: var(--button-color);
+                    color: var(--light-color);
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+                    font-size: 1rem;
+                    cursor: pointer;
+            
+                    &:hover {
+                        transition: background-color 0.5s ease-in-out;
+                        background-color: var(--button-hover-color);
+                        color: var(--dark-color);
+                    }
+                }
+            }
+        }
+    }
+}
+
 .comment-container {
     display: flex;
     width: 100%;
@@ -145,3 +225,27 @@
     }    
 }
 
+.data-options {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 20px;
+    background-color: var(--light-color);
+
+    button {
+        width: fit-content;
+        background-color: var(--button-color);
+        color: var(--light-color);
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            transition: background-color 0.5s ease-in-out;
+            background-color: var(--button-hover-color);
+            color: var(--dark-color);
+        }
+    }
+}

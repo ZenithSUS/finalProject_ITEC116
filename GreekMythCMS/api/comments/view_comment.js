@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const comment_id = urlParams.get('id');
 
-    const comment = await getRequest(comments_url, comment_id, token);
+    const comment = await getRequest(comments_url, comment_id, token, "getComment");
 
     if(comment && comment.status < 300){
         console.log(comment);;

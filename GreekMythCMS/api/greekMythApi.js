@@ -856,6 +856,7 @@ const commentDisplayData = (comments, page = currentPage) => {
 
       // Add pagination controls
       document.querySelector('.pagination-container').style.display = 'flex'; 
+      document.querySelector('.data-options').style.display = 'flex';
       const paginationContainer = document.querySelector('.pagination-comments'); 
       paginationContainer.innerHTML = ''; // Clear previous pagination
 

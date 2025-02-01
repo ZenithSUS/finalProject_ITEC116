@@ -1,7 +1,6 @@
 <?php
 require_once('../api/apiStatus.php');
 class Users extends Api {
-    protected $errors = array();
 
     // Constructor to initialize database connection
     public function __construct(){
