@@ -41,7 +41,7 @@
 <body>
     <?php
     //Check if the post is set
-    if(isset($_GET['post_id']) && !empty($_GET['post_id'])) {
+    if(isset($_GET['post_id']) && !empty($_GET['post_id']) && isset($_GET['title']) && !empty($_GET['title'])) {
         //Get data from url using GET method
         $postId = $_GET['post_id'];
     } else {

@@ -416,6 +416,9 @@
         WHERE posts.post_id = '$postId'";
         //Execute query
         $result = $conn->query($sql);
+        if($result->num_rows == 0) {
+            echo "<script> window.location.href = '../index.php'; </script>";
+        }
         //Get post data from query using fetch_assoc
         $row = $result->fetch_assoc();
         //Get post date and time from created_at

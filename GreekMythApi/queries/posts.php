@@ -108,6 +108,7 @@ class Posts extends Api {
         return 0;
     }
 
+
     public function createPost(?string $userId = null, ?string $greekId, ?string $title = null, ?string $content) : string {
         $sql = "INSERT INTO posts (post_id, author, greek_group, title, content) VALUES (UUID(), ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($sql);
@@ -141,8 +142,52 @@ class Posts extends Api {
         }
 
         $stmt->execute();
-        return $stmt->affected_rows > 0 ? $this->created() : $this->queryFailed();
+        if($stmt->affected_rows > 0)  {
+            $postId = $this->getPostById($userId, $title);
+            $greekName = $this->getGreekName($greekId);
+            if($greekName !== null) {
+                $this->addActivityPost($userId, "created a post with title " . $title . " in " . $greekName . " discussion", $postId);
+            } else {
+                $this->addActivityPost($userId, "created a post with title " . $title, $postId);
+            }
+            return $this->created();
+        } else {
+            return $this->queryFailed();
+        }
     }
 
+
+    private function addActivityPost(?string $userId = null, ?string $activity = null, ?string $postId = null) : void {
+        $sql = "INSERT INTO activities (user_id, activity, post_id) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('sss', $userId, $activity, $postId);
+        $stmt->execute();
+    }
+
+    private function getPostById(?string $userId = null, ?string $title) : string {
+        $sql = "SELECT post_id FROM posts WHERE author = ? AND title = ?";
+        $stmt = $this->conn->prepare($sql);
+
+        if(!$stmt){
+            return null;
+        } else {
+            $stmt->bind_param('ss', $userId, $title);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $postId = $row['post_id'] ?? null;
+            return $postId != null ? $postId : null;
+        }
+    }
+
+    private function getGreekName(?string $greekId) : string {
+        $sql = "SELECT name FROM Greeks WHERE greek_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('s', $greekId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['name'] ?? null;
+    }
 }
 ?>
