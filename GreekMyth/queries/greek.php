@@ -173,7 +173,7 @@
         $result2 = $conn->query($sql2);
         $result3 = $conn->query($sql3);
         // Check if myth exists
-        if($result->num_rows == 0 || $result2->num_rows == 0 || $result3->num_rows == 0) {
+        if($result->num_rows == 0 || $result2->num_rows == 0) {
             echo "<script> window.location.href = 'index.php'; </script>";
         }
         //Fetch results that counts the number of people in the myth
