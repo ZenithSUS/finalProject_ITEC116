@@ -48,9 +48,10 @@
         GreekMyth also includes a rating and rewards system, where users can earn recognition for their creativity and contributions to the community.
          Regular updates and new features are planned to keep the platform fresh and engaging, ensuring that it remains an exciting space for mythological enthusiasts to explore, share, and grow together.
       </p>
-      <button class="interactive-btn" id="quiz" onclick="startQuiz()">Test Your Knowledge</button>
-
-      <a href="auth/login.php" class="interactive-btn right">Proceed to Login</a>
+      <div class="button-options">
+        <button class="interactive-btn" id="quiz" onclick="startQuiz()">Test Your Knowledge</button>
+        <a href="auth/login.php" class="interactive-btn right">Proceed to Login</a>
+      </div>
     </section>
 
 

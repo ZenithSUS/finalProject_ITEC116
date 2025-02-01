@@ -216,6 +216,23 @@ footer p {
   background-color: #003b80;
 }
 a.right {
-  float: right;
+  display: block;
   text-decoration: none;
+  text-align: center;
+}
+
+.button-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Media Queries */
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    .button-options {
+      flex-direction: column;
+      gap: 10px;
+    }
 }
