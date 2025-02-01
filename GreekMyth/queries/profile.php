@@ -336,7 +336,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
-        $picture = $row['image_url'];
+        $picture = $row['image_url'] ?? null;
         if($picture != null) {
             unlink("../img/gods/" . $picture);
         }
