@@ -74,7 +74,11 @@ class Comments extends Api {
         $stmt->execute();
         if($stmt->affected_rows > 0) {
             $title = $this->getPostTitle($postId);
-            $this->addActivityComment($userId, "commennted on a post titled " . $title, $commentId);
+            if($parentId === null) {
+                $this->addActivityComment($userId, "commented on a post titled " . $title, $commentId);
+            } else {
+                $this->addActivityComment($userId, "replied to a comment titled " . $title, $commentId);
+            }
             return $this->created();
         } 
         return $this->notFound();
