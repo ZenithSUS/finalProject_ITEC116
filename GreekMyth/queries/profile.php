@@ -4,6 +4,10 @@
         //Write and Execute Query
         $result = $conn->query("SELECT * FROM users WHERE user_id = '$userId'") 
         or die($conn->error);
+        //Check if user exists
+        if($result->num_rows == 0) {
+            echo "<script> window.location.href = '../index.php'; </script>";
+        }
             //Get user data using fetch_assoc or fetch associative arrays
             $user = $result->fetch_assoc();
             // Format date

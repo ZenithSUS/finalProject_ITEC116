@@ -159,12 +159,12 @@
         //Get user id
         $userId = $_SESSION['user_id'];
         //Write querie for myth
-        $sql = "SELECT * FROM greeks WHERE greek_id = '$greek_id'";
+        $sql = "SELECT * FROM greeks WHERE greek_id = '$greek_id' AND status = 1";
         //Write query for number of people in myth
         $sql2 = "SELECT COUNT(*) AS total_people FROM user_groups 
         JOIN greeks ON greeks.greek_id = user_groups.greek_id 
         JOIN users ON user_groups.user_id = users.user_id
-        WHERE greeks.greek_id = '$greek_id'";
+        WHERE greeks.greek_id = '$greek_id' AND greeks.status = 1";
         //Write query for checking if the user is the creator of the myth
         $sql3 = "SELECT users.username, greeks.creator FROM greeks JOIN users ON greeks.creator = users.user_id 
         WHERE greek_id = '$greek_id'";
@@ -172,6 +172,10 @@
         $result = $conn->query($sql);
         $result2 = $conn->query($sql2);
         $result3 = $conn->query($sql3);
+        // Check if myth exists
+        if($result->num_rows == 0 || $result2->num_rows == 0 || $result3->num_rows == 0) {
+            echo "<script> window.location.href = 'index.php'; </script>";
+        }
         //Fetch results that counts the number of people in the myth
         $row2 = $result2->fetch_assoc();
         $row3 = $result3->fetch_assoc();

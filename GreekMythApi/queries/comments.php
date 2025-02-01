@@ -72,8 +72,12 @@ class Comments extends Api {
         }
 
         $stmt->execute();
-        $status = $stmt->affected_rows > 0 ? $this->created() : $this->notFound();
-        return $status;
+        if($stmt->affected_rows > 0) {
+            $title = $this->getPostTitle($postId);
+            $this->addActivityComment($userId, "commennted on a post titled " . $title, $commentId);
+            return $this->created();
+        } 
+        return $this->notFound();
     }
 
     public function getParentComments(?string $postId) : string {
@@ -190,6 +194,23 @@ class Comments extends Api {
 
     private function deleteCommentQuery() : string {
         return "DELETE FROM comments WHERE comment_id = ?";
+    }
+
+    private function addActivityComment(?string $userId = null, ?string $activity = null, ?string $commentId = null) : void {
+        $sql = "INSERT INTO activities (user_id, activity, comment_id) VALUES (?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('sss', $userId, $activity, $commentId);
+        $stmt->execute();
+    }
+
+    private function getPostTitle(?string $postId) : string {
+        $sql = "SELECT title FROM posts WHERE post_id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('s', $postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['title'] ?? null;
     }
 
 }

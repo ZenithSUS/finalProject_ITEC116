@@ -416,6 +416,7 @@
         WHERE posts.post_id = '$postId'";
         //Execute query
         $result = $conn->query($sql);
+        //Check if post exists
         if($result->num_rows == 0) {
             echo "<script> window.location.href = '../index.php'; </script>";
         }
