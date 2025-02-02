@@ -234,6 +234,17 @@ class Users extends Api {
         
         $stmt->bind_param('sss', $username, $email, $id);
         $stmt->execute();
+
+        if($stmt->affected_rows === 0 && $image !== null){
+            if(!empty($image)){
+                if($this->changeImage($id, $image) === false){
+                    $stmt->close();
+                    return $this->queryFailed("Edit", $this->errors);
+                }
+            }
+            $stmt->close();
+            return $this->editedResource();          
+        }
             
         if($stmt->affected_rows > 0 || $image !== null){
             if(!empty($image)){
@@ -246,7 +257,7 @@ class Users extends Api {
             return $this->editedResource();
         }
 
-        if($stmt->affected_rows === 0 || $image === null){
+        if($stmt->affected_rows > 0 && $image === null) {
             $stmt->close();
             return $this->editedResource();
         }
