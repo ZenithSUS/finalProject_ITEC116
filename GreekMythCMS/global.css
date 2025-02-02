@@ -29,7 +29,7 @@
     /* Fonts for the system */
     --font-style1: 'Constatine', 'serif';
     --font-style2:  monospace;
-    --font-style3: Arial, Helvetica, sans-serif;
+    --font-style3: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     --font-style: var(--font-style1); /* Default font style */
 }
 
