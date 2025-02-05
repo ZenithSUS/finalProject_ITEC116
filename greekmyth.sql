@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2025 at 04:18 AM
+-- Generation Time: Feb 05, 2025 at 05:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,7 +66,13 @@ INSERT INTO `activities` (`activity_id`, `post_id`, `comment_id`, `user_id`, `ac
 (417, NULL, '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'commennted on a post titled Zeus is mah Friend!', '2025-02-01 13:57:07'),
 (419, NULL, '679e28478f346', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'replied to a comment titled Zeus is mah Friend!', '2025-02-01 13:57:27'),
 (420, NULL, '679e286940149', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'replied to a comment titled Zeus is mah Friend!', '2025-02-01 13:58:01'),
-(427, NULL, '679e44ad32896', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 15:58:37');
+(427, NULL, '679e44ad32896', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 15:58:37'),
+(430, NULL, '67a2e2823ae2e', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled This is a dummy post', '2025-02-05 04:01:06'),
+(432, NULL, '67a2e2a52dc7d', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'replied to a comment titled Zeus is too OP in this World', '2025-02-05 04:01:41'),
+(434, NULL, '67a2e337d263e', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-05 04:04:07'),
+(435, NULL, '67a2e3799d849', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled This is a dummy post', '2025-02-05 04:05:13'),
+(437, NULL, '67a2e3f30b10d', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Sample Post', '2025-02-05 04:07:15'),
+(438, NULL, '67a2e429c28d2', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Sample Post', '2025-02-05 04:08:09');
 
 -- --------------------------------------------------------
 
@@ -87,7 +93,7 @@ CREATE TABLE `admin_settings` (
 INSERT INTO `admin_settings` (`admin_id`, `dark_mode`, `font_style`) VALUES
 ('3149ec6e-c60e-11ef-8986-7c05075eb45f', 1, 'fonts3'),
 ('4a5f77c0-c337-11ef-864c-7c05075eb45f', 1, 'fonts2'),
-('52dbe180-e164-11ef-ac93-7c05075eb45f', 1, 'fonts2'),
+('52dbe180-e164-11ef-ac93-7c05075eb45f', 1, 'fonts3'),
 ('651e5364-c607-11ef-8986-7c05075eb45f', 1, 'fonts2'),
 ('aad38520-b88f-11ef-88fc-7c05075eb45f', 0, 'fonts1');
 
@@ -114,7 +120,7 @@ CREATE TABLE `admin_users` (
 INSERT INTO `admin_users` (`id`, `username`, `email`, `password`, `image_src`, `token`, `verified`) VALUES
 ('3149ec6e-c60e-11ef-8986-7c05075eb45f', 'ZenithIsGod!', 'zenith@gmail.com', '$2y$10$kIw8ooCFUhBszjKIHEl0C.DztgnKyaKukyn25DjTWCDE9QgY1mbAu', '67718d3cec6104.27214304.png', NULL, 0),
 ('4a5f77c0-c337-11ef-864c-7c05075eb45f', 'ZenZen!', 'zen@gmail.com', '$2y$10$fIUwxMO86i.8Ak97pQO0/.YKt67r2opl7BUtEWT4iZc/jPHQ/UwHq', '677376a3593ab4.23381516.jpg', '78db392da39e4a4de0f593f0addb0aa507d0ff886a798015cae84441f6e6268c', 1),
-('52dbe180-e164-11ef-ac93-7c05075eb45f', 'ZenithZUZ!', 'merinojc25@gmail.com', '$2y$10$2ty9L8hpfIdteVgU77naBer6Amf4xq9fmKWg/A1kTflyeHc2r2QuW', '679f6c8c53d9d2.62180631.jpg', '29058f75a40aeaba240c1ca788bf55fae0e15e8d937137dc8ff1225b2efa0b70', 1),
+('52dbe180-e164-11ef-ac93-7c05075eb45f', 'ZenithZUZ!', 'merinojc25@gmail.com', '$2y$10$2ty9L8hpfIdteVgU77naBer6Amf4xq9fmKWg/A1kTflyeHc2r2QuW', '67a2e22f270c37.56942047.jpg', '29058f75a40aeaba240c1ca788bf55fae0e15e8d937137dc8ff1225b2efa0b70', 1),
 ('651e5364-c607-11ef-8986-7c05075eb45f', 'Chou!!', 'chou@gmail.com', '$2y$10$zdoXrTJ2ohrO0HsMfXK5BefilZ9xufkwBSBFHlqSCB3qrpclMZdh.', '677181d56c81a6.02665576.jpg', NULL, 0),
 ('aad38520-b88f-11ef-88fc-7c05075eb45f', 'ZenithSUS', 'admin2@gmail.com', '$2y$10$zILK0pdKGNaQeZQKcHG6GuZQrqtdw5aeJs.2BpTwSQYTSE.6f/tgO', NULL, NULL, 0);
 
@@ -154,15 +160,21 @@ INSERT INTO `comments` (`comment_id`, `post_id`, `parent_comment`, `author`, `co
 ('679e1fda83274', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'Comment COMMENTTTTT', 0, 0, '2025-02-01 21:21:30', 1),
 ('679e226ee73ff', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'Yes too OP', 1, 0, '2025-02-01 21:32:30', 1),
 ('679e228c510d1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'AHHHH', 0, 1, '2025-02-01 21:33:00', 1),
-('679e236ba15c1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'EH?', 0, 0, '2025-02-01 21:36:43', 0),
-('679e262759390', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'HAHAHAHAH', 1, 0, '2025-02-01 21:48:23', 1),
+('679e236ba15c1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'EH?', 0, 0, '2025-02-01 21:36:43', 1),
+('679e262759390', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'HAHAHAHAH', 1, 0, '2025-02-01 21:48:23', 0),
 ('679e267b5c1f3', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'YEAAHHHHH', 1, 0, '2025-02-01 21:49:47', 1),
 ('679e27a61e1e7', 'c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'Hello DaeWae!', 0, 0, '2025-02-01 21:54:46', 1),
 ('679e27f3b3a13', 'bddffee1-e097-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'It works Bro!!', 0, 0, '2025-02-01 21:56:03', 1),
 ('679e2833bc742', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'Hello, Guys Zeus, is really my friend from many years ago', 1, 0, '2025-02-01 21:57:07', 1),
 ('679e28478f346', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'I swear :)', 1, 0, '2025-02-01 21:57:27', 1),
 ('679e286940149', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'I\'m not lying >:(', 0, 1, '2025-02-01 21:58:01', 1),
-('679e44ad32896', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'eg', 0, 0, '2025-02-01 23:58:37', 1);
+('679e44ad32896', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'eg', 0, 0, '2025-02-01 23:58:37', 1),
+('67a2e2823ae2e', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'EYYYYY', 0, 0, '2025-02-05 12:01:06', 1),
+('67a2e2a52dc7d', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e44ad32896', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'HEH', 0, 0, '2025-02-05 12:01:41', 1),
+('67a2e337d263e', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'EH', 0, 0, '2025-02-05 12:04:07', 1),
+('67a2e3799d849', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'EH', 0, 0, '2025-02-05 12:05:13', 1),
+('67a2e3f30b10d', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'AHH', 0, 0, '2025-02-05 12:07:15', 1),
+('67a2e429c28d2', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'fdsds', 0, 0, '2025-02-05 12:08:09', 1);
 
 -- --------------------------------------------------------
 
@@ -234,11 +246,12 @@ INSERT INTO `greeks` (`greek_id`, `name`, `description`, `image_url`, `creator`,
 ('2b013a64-2ba0-11ef-a131-7c05075eb45f', 'Aphrodite', 'Aphrodite, the ancient Greek goddess of sexual love and beauty, is closely associated with Venus in Roman mythology. According to Hesiod’s Theogony, she emerged from the white foam created by the severed genitals of Uranus (Heaven) after his son Cronus threw them into the sea. Aphrodite was widely worshipped as a goddess of the sea, seafaring, love, and fertility. While her public cult was generally solemn, she occasionally presided over marriage. Notably, she had mortal lovers, including the Trojan shepherd Anchises (with whom she became the mother of Aeneas) and the youth Adonis.', 'APHRODITE.webp', 'Default', 1),
 ('44c24fcc-2ba4-11ef-a131-7c05075eb45f', 'Artemis', 'Artemis, in ancient Greek religion and mythology, is the goddess of the hunt, the wilderness, wild animals, nature, vegetation, childbirth, care of children, and chastity. She was often said to roam the forests and mountains, attended by her entourage of nymphs. Artemis is the daughter of Zeus and Leto, and the twin sister of Apollo. She was very protective of her and her priestesses innocence.', 'ARTEMIS.webp', 'Default', 1),
 ('5e965592-2ba6-11ef-a131-7c05075eb45f', 'Poseidon', 'Poseidon, in Greek mythology, is the god of the sea, earthquakes, and horses. He is one of the Twelve Olympians, the major deities of the Greek pantheon. Often depicted with a trident, Poseidon is known for his tempestuous nature, capable of both fury and benevolence. He is considered a protector of seafarers and a creator of storms and floods. In Roman mythology, he is identified with Neptune.', 'POSEIDON.webp', 'Default', 1),
+('7b8c8381-e374-11ef-91b3-7c05075eb45f', 'Sample Gods', 'Sample', '67a2e04206c537.54317397.jpg', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 1),
 ('8d2d3e82-2ba4-11ef-a131-7c05075eb45f', 'Athena', 'Athena, in Greek religion, is the city protectress, goddess of war, handicraft, and practical reason. The Romans identified her with Minerva. Unlike Ares, the god of war who represents mere bloodlust, Athena embodies the intellectual and civilized side of war, emphasizing justice and skill. She was also associated paradoxically with peace and handicrafts, particularly spinning and weaving. Majestic and stern, Athena surpassed all others in her domains.', 'ATHENA.webp', 'Default', 1),
 ('8e3c6da0-2ba3-11ef-a131-7c05075eb45f', 'Ares', 'Ares, the Greek god of war, is one of the Twelve Olympians. He is often depicted as a fierce and bloodthirsty warrior. Ares is the son of Zeus and Hera, and his siblings include Athena, Apollo, and Hermes. In Greek mythology, he is associated with violence, conflict, and the brutality of war', 'ARES.webp', 'Default', 1),
 ('b9da2016-2ba7-11ef-a131-7c05075eb45f', 'Demeter', 'Demeter, the revered Greek goddess of agriculture, grain, and fertility, holds a prominent position in Greek mythology and the hearts of ancient people. As the giver of life and sustenance, her influence extended far beyond the fields, touching upon the very cycles of life, death, and rebirth. Demeter is often depicted as a mature woman, her presence radiating warmth and abundance. She is adorned with symbols of her dominion, such as sheaves of wheat, a cornucopia overflowing with fruits and grains, or a torch symbolizing enlightenment and knowledge.\r\n\r\nDemeter\'s significance is deeply intertwined with the Eleusinian Mysteries, secretive rituals centered around the myth of her daughter Persephone\'s abduction by Hades, the god of the underworld. This tragic event plunged Demeter into grief, causing the earth to wither and die. However, upon Persephone\'s eventual return, the world bloomed anew, signifying the renewal of life and the cyclical nature of the seasons. The Eleusinian Mysteries offered initiates a glimpse into these profound concepts, promising a blessed afterlife and fostering a sense of connection to the divine.', 'DEMETER.webp', 'Default', 1),
 ('b9da2cb2-2ba7-11ef-a131-7c05075eb45f', 'Dionysius', 'Dionysus, the enigmatic and captivating Greek god of wine, revelry, theater, and religious ecstasy, holds a unique place in the pantheon of Greek deities. Often depicted as a youthful and exuberant figure, adorned with ivy wreaths and holding a thyrsus (a pinecone-tipped staff), Dionysus embodies the spirit of uninhibited joy, transformation, and the blurring of boundaries between the human and divine.\r\n\r\nHis origins are shrouded in mystery, with various myths attributing his birthplace to different regions. Some tales claim he is a foreign god who arrived in Greece from the East, bringing with him the knowledge of viticulture and the intoxicating power of wine. Others describe him as the son of Zeus and the mortal Semele, who perished due to Hera\'s jealousy. Regardless of his origin, Dionysus quickly became a beloved figure, celebrated for his ability to liberate people from their inhibitions and connect them to the primal forces of nature.', 'DIONYSIUS.webp', 'Default', 1),
-('cae89f13-e044-11ef-b06e-7c05075eb45f', 'Sample God', 'Sample Description', '679d87c1cca2a5.86079182.jpg', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 1),
+('ca5b13f2-e374-11ef-91b3-7c05075eb45f', 'DUMMY GODZ', 'GOZ', NULL, '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 1),
 ('cec09d13-2b9d-11ef-a131-7c05075eb45f', 'Zeus', 'Zeus, the sky and thunder god in ancient Greek mythology, rules as the king of the gods on Mount Olympus. As the chief Greek deity, he is considered the protector and father of all gods and humans. Zeus is often depicted as an older man with a beard, and his symbols include the lightning bolt and the eagle. He was notorious for his numerous divine and heroic offspring, including Apollo, Artemis, Hermes, and Heracles. His traditional weapon is the thunderbolt, and he is equated with the Roman god Jupiter.', 'ZEUS.webp', 'Default', 1),
 ('e0f5872c-e0a2-11ef-9b1c-7c05075eb45f', 'AdminGODZILLA', 'GODZILLA!', '679e259bd9fff6.30260724.jpg', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1),
 ('eb824654-2ba6-11ef-a131-7c05075eb45f', 'Hera', 'Hera, the queen of Olympus in Greek mythology, is the goddess of marriage, women, family, and childbirth. She is the wife and sister of Zeus, the king of the gods. While revered for her role as a protector of women, Hera is also known for her jealous and vengeful nature, often directed towards Zeus\'s lovers and their offspring. Her stories are filled with drama, passion, and divine retribution, making her a compelling figure in ancient Greek lore.', 'HERA.webp', 'Default', 1);
@@ -289,7 +302,8 @@ INSERT INTO `likes` (`like_id`, `liker`, `post_id`, `comment_id`, `timestamp`, `
 ('679e2811c2eed', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:56:33', 'like'),
 ('679e283c649ea', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e2833bc742', '2025-02-01 21:57:16', 'like'),
 ('679e2854ef248', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e28478f346', '2025-02-01 21:57:40', 'like'),
-('679e287119250', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e286940149', '2025-02-01 21:58:09', 'dislike');
+('679e287119250', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e286940149', '2025-02-01 21:58:09', 'dislike'),
+('67a2e375552f7', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '2025-02-05 12:05:09', 'dislike');
 
 -- --------------------------------------------------------
 
@@ -316,7 +330,7 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`post_id`, `title`, `content`, `author`, `likes`, `dislikes`, `greek_group`, `status`, `created_at`, `updated_at`) VALUES
 ('06086f9b-e045-11ef-b06e-7c05075eb45f', 'Sample Post', 'Sample Content', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 0, NULL, 1, '2025-02-01 10:34:13', '2025-02-01 10:34:13'),
-('1b8609f4-df8d-11ef-b0d2-7c05075eb45f', 'This is a dummy post', 'DUMMYYYYY!!', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 2, 0, '44c24fcc-2ba4-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:37:41', '2025-01-31 12:37:41'),
+('1b8609f4-df8d-11ef-b0d2-7c05075eb45f', 'This is a dummy post', 'DUMMYYYYY!!', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 2, 1, '44c24fcc-2ba4-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:37:41', '2025-01-31 12:37:41'),
 ('354e6eb4-dcbf-11ef-96dd-7c05075eb45f', 'Hello Goddsssss', '', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', 1, 0, '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:58:46', '2025-01-27 22:58:46'),
 ('533e8563-e0a4-11ef-9b1c-7c05075eb45f', 'Zeus is mah Friend!', '', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 1, 0, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-02-01 21:56:25', '2025-02-01 21:56:25'),
 ('95c8dc12-dcb8-11ef-96dd-7c05075eb45f', 'The is a second test post', 'Test', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 1, '2b013a64-2ba0-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:11:21', '2025-01-27 22:11:21'),
@@ -426,6 +440,8 @@ INSERT INTO `user_groups` (`id`, `user_id`, `greek_id`, `date_joined`) VALUES
 ('6d965e17-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
 ('6d9ed969-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
 ('6da91e48-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
+('7ba69f20-e374-11ef-91b3-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '7b8c8381-e374-11ef-91b3-7c05075eb45f', '2025-02-05 11:51:30'),
+('ca7517c6-e374-11ef-91b3-7c05075eb45f', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'ca5b13f2-e374-11ef-91b3-7c05075eb45f', '2025-02-05 11:53:42'),
 ('e1013d54-e0a2-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'e0f5872c-e0a2-11ef-9b1c-7c05075eb45f', '2025-02-01 21:46:03'),
 ('e1982115-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2024-12-30 01:39:40'),
 ('e1a5a493-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2024-12-30 01:39:40'),
@@ -607,7 +623,7 @@ ALTER TABLE `verification_codes`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=430;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=440;
 
 --
 -- Constraints for dumped tables
