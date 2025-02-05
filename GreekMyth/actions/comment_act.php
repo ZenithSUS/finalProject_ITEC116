@@ -9,6 +9,14 @@
 
 
     if(isset($_SESSION['user_id']) && isset($_GET['post_id']) && !empty($_SESSION['user_id']) && !empty($_GET['post_id'])) {
+
+        // Check if all the forms are not submitted
+        if(!isset($_POST['commentForm']) && !isset($_POST['replyForm']) && !isset($_POST['deleteComment']) && isset($_POST['post_id'])) {
+            header("Location: ../user/currentPost.php?post_id=" . $_GET['post_id']);
+        } else {
+            header("Location: ../index.php");
+        }
+
         //Checks if the commentform is submitted
         if(isset($_POST['commentForm'])) {
             //Get data from url using GET method
@@ -42,13 +50,6 @@
 
             //Call deleteComment function
             deleteComment($conn, $commentId, $postId);
-        }
-
-        // Check if all the forms are not submitted
-        if(!isset($_POST['commentForm']) && !isset($_POST['replyForm']) && !isset($_POST['deleteComment']) && isset($_POST['post_id'])) {
-            header("Location: ../user/currentPost.php?post_id=" . $_GET['post_id']);
-        } else {
-            header("Location: ../index.php");
         }
 
     } else {
