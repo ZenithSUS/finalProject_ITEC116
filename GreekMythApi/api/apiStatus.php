@@ -98,6 +98,15 @@ class Api extends Database {
                     $i++;
                 }
             }
+
+            if(is_null($row[0]['image_url'])) {
+                $i = 0;
+                while (isset($row[$i])) {
+                    $row[$i]['description'] = mb_convert_encoding($row[$i]['description'], 'UTF-8', 'UTF-8');
+                    $row[$i]['image_url'] = $this->imagePath['default_gods'];
+                    $i++;
+                }
+            }
         }
 
         
