@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2025 at 02:41 PM
+-- Generation Time: Feb 05, 2025 at 04:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -55,7 +55,18 @@ INSERT INTO `activities` (`activity_id`, `post_id`, `comment_id`, `user_id`, `ac
 (406, NULL, '679e1fda83274', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 13:21:30'),
 (407, NULL, '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 13:32:31'),
 (408, NULL, '679e228c510d1', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'replied to a comment titled Zeus is too OP in this World', '2025-02-01 13:33:00'),
-(409, NULL, '679e236ba15c1', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'replied to a comment titled Zeus is too OP in this World', '2025-02-01 13:36:43');
+(409, NULL, '679e236ba15c1', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'replied to a comment titled Zeus is too OP in this World', '2025-02-01 13:36:43'),
+(410, 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'edited a post with title Zeus is too OP in this World', '2025-02-01 13:47:43'),
+(411, NULL, '679e262759390', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'commennted on a post titled Sample Post', '2025-02-01 13:48:23'),
+(412, NULL, '679e267b5c1f3', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 13:49:47'),
+(413, 'cf23fa6a-e0a3-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'created a post with title My First Post', '2025-02-01 13:52:43'),
+(414, NULL, '679e27a61e1e7', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'commennted on a post titled Hello GreekMyth', '2025-02-01 13:54:46'),
+(415, NULL, '679e27f3b3a13', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'commennted on a post titled Test Post', '2025-02-01 13:56:04'),
+(416, '533e8563-e0a4-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'created a post with title Zeus is mah Friend! in Zeus discussion', '2025-02-01 13:56:25'),
+(417, NULL, '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'commennted on a post titled Zeus is mah Friend!', '2025-02-01 13:57:07'),
+(419, NULL, '679e28478f346', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'replied to a comment titled Zeus is mah Friend!', '2025-02-01 13:57:27'),
+(420, NULL, '679e286940149', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'replied to a comment titled Zeus is mah Friend!', '2025-02-01 13:58:01'),
+(427, NULL, '679e44ad32896', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'commennted on a post titled Zeus is too OP in this World', '2025-02-01 15:58:37');
 
 -- --------------------------------------------------------
 
@@ -76,9 +87,9 @@ CREATE TABLE `admin_settings` (
 INSERT INTO `admin_settings` (`admin_id`, `dark_mode`, `font_style`) VALUES
 ('3149ec6e-c60e-11ef-8986-7c05075eb45f', 1, 'fonts3'),
 ('4a5f77c0-c337-11ef-864c-7c05075eb45f', 1, 'fonts2'),
+('52dbe180-e164-11ef-ac93-7c05075eb45f', 1, 'fonts2'),
 ('651e5364-c607-11ef-8986-7c05075eb45f', 1, 'fonts2'),
-('aad38520-b88f-11ef-88fc-7c05075eb45f', 0, 'fonts1'),
-('c10d8b3f-cb4f-11ef-856e-7c05075eb45f', 1, 'fonts2');
+('aad38520-b88f-11ef-88fc-7c05075eb45f', 0, 'fonts1');
 
 -- --------------------------------------------------------
 
@@ -102,10 +113,10 @@ CREATE TABLE `admin_users` (
 
 INSERT INTO `admin_users` (`id`, `username`, `email`, `password`, `image_src`, `token`, `verified`) VALUES
 ('3149ec6e-c60e-11ef-8986-7c05075eb45f', 'ZenithIsGod!', 'zenith@gmail.com', '$2y$10$kIw8ooCFUhBszjKIHEl0C.DztgnKyaKukyn25DjTWCDE9QgY1mbAu', '67718d3cec6104.27214304.png', NULL, 0),
-('4a5f77c0-c337-11ef-864c-7c05075eb45f', 'ZenZen!', 'zen@gmail.com', '$2y$10$fIUwxMO86i.8Ak97pQO0/.YKt67r2opl7BUtEWT4iZc/jPHQ/UwHq', '677376a3593ab4.23381516.jpg', '224f450d140f791eebe9d14096baf3b19576976ba757fc2e2b3e183dfe73d2e0', 1),
+('4a5f77c0-c337-11ef-864c-7c05075eb45f', 'ZenZen!', 'zen@gmail.com', '$2y$10$fIUwxMO86i.8Ak97pQO0/.YKt67r2opl7BUtEWT4iZc/jPHQ/UwHq', '677376a3593ab4.23381516.jpg', '78db392da39e4a4de0f593f0addb0aa507d0ff886a798015cae84441f6e6268c', 1),
+('52dbe180-e164-11ef-ac93-7c05075eb45f', 'ZenithZUZ!', 'merinojc25@gmail.com', '$2y$10$2ty9L8hpfIdteVgU77naBer6Amf4xq9fmKWg/A1kTflyeHc2r2QuW', '679f6c8c53d9d2.62180631.jpg', '29058f75a40aeaba240c1ca788bf55fae0e15e8d937137dc8ff1225b2efa0b70', 1),
 ('651e5364-c607-11ef-8986-7c05075eb45f', 'Chou!!', 'chou@gmail.com', '$2y$10$zdoXrTJ2ohrO0HsMfXK5BefilZ9xufkwBSBFHlqSCB3qrpclMZdh.', '677181d56c81a6.02665576.jpg', NULL, 0),
-('aad38520-b88f-11ef-88fc-7c05075eb45f', 'ZenithSUS', 'admin2@gmail.com', '$2y$10$zILK0pdKGNaQeZQKcHG6GuZQrqtdw5aeJs.2BpTwSQYTSE.6f/tgO', NULL, NULL, 0),
-('c10d8b3f-cb4f-11ef-856e-7c05075eb45f', 'ZenithZUZ!', 'merinojc25@gmail.com', '$2y$10$1Bk2IXbX24wly5sV08CyAOdW9bAfRpP6Jit96l04moRrLYmrAv3QK', '679ce3227f6e91.26686938.jpg', 'db382246662afa6954c941cfa6f56fa83d09d5bab1156eace71351ea4372511c', 1);
+('aad38520-b88f-11ef-88fc-7c05075eb45f', 'ZenithSUS', 'admin2@gmail.com', '$2y$10$zILK0pdKGNaQeZQKcHG6GuZQrqtdw5aeJs.2BpTwSQYTSE.6f/tgO', NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -132,8 +143,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`comment_id`, `post_id`, `parent_comment`, `author`, `content`, `likes`, `dislikes`, `created_at`, `status`) VALUES
 ('6797a9e8b458b', '95c8dc12-dcb8-11ef-96dd-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'This is disliked comment', 1, 0, '2025-01-27 23:44:40', 1),
 ('679c5414f069a', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'Hw', 1, 0, '2025-01-31 12:39:48', 1),
-('679c57e5d7cea', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'asasd', 0, 0, '2025-01-31 12:56:05', 1),
-('679d99d2373f2', '95fa0fb6-dcb8-11ef-96dd-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'HEH', 0, 0, '2025-02-01 11:49:38', 1),
+('679c57e5d7cea', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'asasd', 0, 0, '2025-01-31 12:56:05', 0),
+('679d99d2373f2', '95fa0fb6-dcb8-11ef-96dd-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'HEH', 0, 0, '2025-02-01 11:49:38', 0),
 ('679d9a55b4ddc', '95c8dc12-dcb8-11ef-96dd-7c05075eb45f', '6797a9e8b458b', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'Comment child', 1, 0, '2025-02-01 11:51:49', 1),
 ('679d9a75bbed4', '95c8dc12-dcb8-11ef-96dd-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'Sample Comment', 0, 1, '2025-02-01 11:52:21', 1),
 ('679da1538b40f', 'ebde88b9-dfe1-11ef-b604-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'Sample Comment', 0, 0, '2025-02-01 12:21:39', 1),
@@ -143,7 +154,15 @@ INSERT INTO `comments` (`comment_id`, `post_id`, `parent_comment`, `author`, `co
 ('679e1fda83274', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'Comment COMMENTTTTT', 0, 0, '2025-02-01 21:21:30', 1),
 ('679e226ee73ff', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'Yes too OP', 1, 0, '2025-02-01 21:32:30', 1),
 ('679e228c510d1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'AHHHH', 0, 1, '2025-02-01 21:33:00', 1),
-('679e236ba15c1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'EH?', 0, 0, '2025-02-01 21:36:43', 1);
+('679e236ba15c1', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', '679e226ee73ff', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'EH?', 0, 0, '2025-02-01 21:36:43', 0),
+('679e262759390', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'HAHAHAHAH', 1, 0, '2025-02-01 21:48:23', 1),
+('679e267b5c1f3', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'YEAAHHHHH', 1, 0, '2025-02-01 21:49:47', 1),
+('679e27a61e1e7', 'c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'Hello DaeWae!', 0, 0, '2025-02-01 21:54:46', 1),
+('679e27f3b3a13', 'bddffee1-e097-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'It works Bro!!', 0, 0, '2025-02-01 21:56:03', 1),
+('679e2833bc742', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', NULL, '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'Hello, Guys Zeus, is really my friend from many years ago', 1, 0, '2025-02-01 21:57:07', 1),
+('679e28478f346', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'I swear :)', 1, 0, '2025-02-01 21:57:27', 1),
+('679e286940149', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', '679e2833bc742', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'I\'m not lying >:(', 0, 1, '2025-02-01 21:58:01', 1),
+('679e44ad32896', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'eg', 0, 0, '2025-02-01 23:58:37', 1);
 
 -- --------------------------------------------------------
 
@@ -165,6 +184,8 @@ CREATE TABLE `friends` (
 INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `created_at`) VALUES
 ('0c127258-df8d-11ef-b0d2-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', '2025-01-31 04:37:15'),
 ('0c194ec5-df8d-11ef-b0d2-7c05075eb45f', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '2025-01-31 04:37:15'),
+('5509698a-e0a3-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', '2025-02-01 13:49:18'),
+('554b8897-e0a3-11ef-9b1c-7c05075eb45f', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '2025-02-01 13:49:19'),
 ('b920b0a7-e09f-11ef-9b1c-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '2025-02-01 13:23:28'),
 ('b92ba6e0-e09f-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '2025-02-01 13:23:28'),
 ('e48679d7-df8f-11ef-b0d2-7c05075eb45f', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', '2025-01-31 04:57:37'),
@@ -185,14 +206,6 @@ CREATE TABLE `friend_requests` (
   `status` enum('pending','accepted','rejected') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `friend_requests`
---
-
-INSERT INTO `friend_requests` (`id`, `requester_id`, `requestee_id`, `status`, `created_at`) VALUES
-('1038ff83-df8d-11ef-b0d2-7c05075eb45f', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'pending', '2025-01-31 04:37:22'),
-('1426914b-e0a2-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'pending', '2025-02-01 13:40:20');
 
 -- --------------------------------------------------------
 
@@ -225,9 +238,9 @@ INSERT INTO `greeks` (`greek_id`, `name`, `description`, `image_url`, `creator`,
 ('8e3c6da0-2ba3-11ef-a131-7c05075eb45f', 'Ares', 'Ares, the Greek god of war, is one of the Twelve Olympians. He is often depicted as a fierce and bloodthirsty warrior. Ares is the son of Zeus and Hera, and his siblings include Athena, Apollo, and Hermes. In Greek mythology, he is associated with violence, conflict, and the brutality of war', 'ARES.webp', 'Default', 1),
 ('b9da2016-2ba7-11ef-a131-7c05075eb45f', 'Demeter', 'Demeter, the revered Greek goddess of agriculture, grain, and fertility, holds a prominent position in Greek mythology and the hearts of ancient people. As the giver of life and sustenance, her influence extended far beyond the fields, touching upon the very cycles of life, death, and rebirth. Demeter is often depicted as a mature woman, her presence radiating warmth and abundance. She is adorned with symbols of her dominion, such as sheaves of wheat, a cornucopia overflowing with fruits and grains, or a torch symbolizing enlightenment and knowledge.\r\n\r\nDemeter\'s significance is deeply intertwined with the Eleusinian Mysteries, secretive rituals centered around the myth of her daughter Persephone\'s abduction by Hades, the god of the underworld. This tragic event plunged Demeter into grief, causing the earth to wither and die. However, upon Persephone\'s eventual return, the world bloomed anew, signifying the renewal of life and the cyclical nature of the seasons. The Eleusinian Mysteries offered initiates a glimpse into these profound concepts, promising a blessed afterlife and fostering a sense of connection to the divine.', 'DEMETER.webp', 'Default', 1),
 ('b9da2cb2-2ba7-11ef-a131-7c05075eb45f', 'Dionysius', 'Dionysus, the enigmatic and captivating Greek god of wine, revelry, theater, and religious ecstasy, holds a unique place in the pantheon of Greek deities. Often depicted as a youthful and exuberant figure, adorned with ivy wreaths and holding a thyrsus (a pinecone-tipped staff), Dionysus embodies the spirit of uninhibited joy, transformation, and the blurring of boundaries between the human and divine.\r\n\r\nHis origins are shrouded in mystery, with various myths attributing his birthplace to different regions. Some tales claim he is a foreign god who arrived in Greece from the East, bringing with him the knowledge of viticulture and the intoxicating power of wine. Others describe him as the son of Zeus and the mortal Semele, who perished due to Hera\'s jealousy. Regardless of his origin, Dionysus quickly became a beloved figure, celebrated for his ability to liberate people from their inhibitions and connect them to the primal forces of nature.', 'DIONYSIUS.webp', 'Default', 1),
-('ca83fe57-dfbc-11ef-b604-7c05075eb45f', 'DaeWae', 'DaeWae', '679ca39598c3e8.38281414.jpg', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 1),
 ('cae89f13-e044-11ef-b06e-7c05075eb45f', 'Sample God', 'Sample Description', '679d87c1cca2a5.86079182.jpg', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 1),
 ('cec09d13-2b9d-11ef-a131-7c05075eb45f', 'Zeus', 'Zeus, the sky and thunder god in ancient Greek mythology, rules as the king of the gods on Mount Olympus. As the chief Greek deity, he is considered the protector and father of all gods and humans. Zeus is often depicted as an older man with a beard, and his symbols include the lightning bolt and the eagle. He was notorious for his numerous divine and heroic offspring, including Apollo, Artemis, Hermes, and Heracles. His traditional weapon is the thunderbolt, and he is equated with the Roman god Jupiter.', 'ZEUS.webp', 'Default', 1),
+('e0f5872c-e0a2-11ef-9b1c-7c05075eb45f', 'AdminGODZILLA', 'GODZILLA!', '679e259bd9fff6.30260724.jpg', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1),
 ('eb824654-2ba6-11ef-a131-7c05075eb45f', 'Hera', 'Hera, the queen of Olympus in Greek mythology, is the goddess of marriage, women, family, and childbirth. She is the wife and sister of Zeus, the king of the gods. While revered for her role as a protector of women, Hera is also known for her jealous and vengeful nature, often directed towards Zeus\'s lovers and their offspring. Her stories are filled with drama, passion, and divine retribution, making her a compelling figure in ancient Greek lore.', 'HERA.webp', 'Default', 1);
 
 -- --------------------------------------------------------
@@ -261,11 +274,22 @@ INSERT INTO `likes` (`like_id`, `liker`, `post_id`, `comment_id`, `timestamp`, `
 ('679da169c17f0', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', NULL, '2025-02-01 12:22:01', 'like'),
 ('679e13f8ab548', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 20:30:48', 'dislike'),
 ('679e140233d6a', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '06086f9b-e045-11ef-b06e-7c05075eb45f', NULL, '2025-02-01 20:30:58', 'like'),
-('679e140d43ff3', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'd4c06719-e097-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 20:31:09', 'like'),
 ('679e227e7ebf2', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', NULL, '679e226ee73ff', '2025-02-01 21:32:46', 'like'),
 ('679e22908710e', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', NULL, '679e228c510d1', '2025-02-01 21:33:04', 'dislike'),
 ('679e23a533607', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'ebde88b9-dfe1-11ef-b604-7c05075eb45f', NULL, '2025-02-01 21:37:41', 'like'),
-('679e23bd6cde7', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:38:05', 'like');
+('679e23bd6cde7', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:38:05', 'like'),
+('679e2611c84a3', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '95fa0fb6-dcb8-11ef-96dd-7c05075eb45f', NULL, '2025-02-01 21:48:01', 'dislike'),
+('679e26197f104', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '1b8609f4-df8d-11ef-b0d2-7c05075eb45f', NULL, '2025-02-01 21:48:09', 'like'),
+('679e262d74a11', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', NULL, '679e262759390', '2025-02-01 21:48:29', 'like'),
+('679e26726a757', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'fc155d48-e096-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:49:38', 'like'),
+('679e26804741e', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e267b5c1f3', '2025-02-01 21:49:52', 'like'),
+('679e2733d0f32', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'cf23fa6a-e0a3-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:52:51', 'like'),
+('679e279b34cae', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', NULL, '2025-02-01 21:54:35', 'dislike'),
+('679e27e6ba448', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'bddffee1-e097-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:55:50', 'like'),
+('679e2811c2eed', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', '533e8563-e0a4-11ef-9b1c-7c05075eb45f', NULL, '2025-02-01 21:56:33', 'like'),
+('679e283c649ea', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e2833bc742', '2025-02-01 21:57:16', 'like'),
+('679e2854ef248', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e28478f346', '2025-02-01 21:57:40', 'like'),
+('679e287119250', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', NULL, '679e286940149', '2025-02-01 21:58:09', 'dislike');
 
 -- --------------------------------------------------------
 
@@ -292,17 +316,17 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`post_id`, `title`, `content`, `author`, `likes`, `dislikes`, `greek_group`, `status`, `created_at`, `updated_at`) VALUES
 ('06086f9b-e045-11ef-b06e-7c05075eb45f', 'Sample Post', 'Sample Content', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 0, NULL, 1, '2025-02-01 10:34:13', '2025-02-01 10:34:13'),
-('1b8609f4-df8d-11ef-b0d2-7c05075eb45f', 'This is a dummy post', 'DUMMYYYYY!!', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 1, 0, '44c24fcc-2ba4-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:37:41', '2025-01-31 12:37:41'),
+('1b8609f4-df8d-11ef-b0d2-7c05075eb45f', 'This is a dummy post', 'DUMMYYYYY!!', '04f033c5-df8c-11ef-b0d2-7c05075eb45f', 2, 0, '44c24fcc-2ba4-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:37:41', '2025-01-31 12:37:41'),
 ('354e6eb4-dcbf-11ef-96dd-7c05075eb45f', 'Hello Goddsssss', '', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', 1, 0, '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:58:46', '2025-01-27 22:58:46'),
+('533e8563-e0a4-11ef-9b1c-7c05075eb45f', 'Zeus is mah Friend!', '', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 1, 0, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-02-01 21:56:25', '2025-02-01 21:56:25'),
 ('95c8dc12-dcb8-11ef-96dd-7c05075eb45f', 'The is a second test post', 'Test', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 1, '2b013a64-2ba0-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:11:21', '2025-01-27 22:11:21'),
-('95fa0fb6-dcb8-11ef-96dd-7c05075eb45f', 'The is a second test post', 'Test', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 0, '2b013a64-2ba0-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:11:22', '2025-01-27 22:11:22'),
-('bddffee1-e097-11ef-9b1c-7c05075eb45f', 'Test Post', 'This is a test post', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 0, 0, '28f5caa3-e097-11ef-9b1c-7c05075eb45f', 1, '2025-02-01 20:26:20', '2025-02-01 20:26:20'),
-('c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', 'Hello GreekMyth', 'Hello', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 1, 0, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:35:24', '2025-01-31 12:35:24'),
-('d4c06719-e097-11ef-9b1c-7c05075eb45f', 'DaeWae is the Wae', 'Where\'s mah queen?', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 1, 0, 'ca83fe57-dfbc-11ef-b604-7c05075eb45f', 1, '2025-02-01 20:26:58', '2025-02-01 20:26:58'),
-('dd07162d-e09c-11ef-9b1c-7c05075eb45f', 'Test Post', 'Test Content', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 0, 0, '28f5caa3-e097-11ef-9b1c-7c05075eb45f', 1, '2025-02-01 21:03:00', '2025-02-01 21:03:00'),
+('95fa0fb6-dcb8-11ef-96dd-7c05075eb45f', 'The is a second test post', 'Test', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 1, '2b013a64-2ba0-11ef-a131-7c05075eb45f', 1, '2025-01-27 22:11:22', '2025-01-27 22:11:22'),
+('bddffee1-e097-11ef-9b1c-7c05075eb45f', 'Test Post', 'This is a test post', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 1, 0, '28f5caa3-e097-11ef-9b1c-7c05075eb45f', 1, '2025-02-01 20:26:20', '2025-02-01 20:26:20'),
+('c9ce5f2d-df8c-11ef-b0d2-7c05075eb45f', 'Hello GreekMyth', 'Hello', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 1, 1, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-01-31 12:35:24', '2025-01-31 12:35:24'),
+('cf23fa6a-e0a3-11ef-9b1c-7c05075eb45f', 'My First Post', 'Hello GreekMyth I\'m Pleased to be here :) I hope I meet new people and to have fun!', '09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 1, 0, NULL, 1, '2025-02-01 21:52:43', '2025-02-01 21:52:43'),
 ('ebc05455-dfe1-11ef-b604-7c05075eb45f', 'WATAHHH', 'sadsadsa', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 0, 0, 'eb824654-2ba6-11ef-a131-7c05075eb45f', 1, '2025-01-31 22:44:50', '2025-01-31 22:44:50'),
 ('ebde88b9-dfe1-11ef-b604-7c05075eb45f', 'WATAHHH', 'sadsadsa', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 0, 'eb824654-2ba6-11ef-a131-7c05075eb45f', 1, '2025-01-31 22:44:50', '2025-01-31 22:44:50'),
-('fc155d48-e096-11ef-9b1c-7c05075eb45f', 'Zeus is too OP in this World', 'Too Stronk', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 1, 1, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-02-01 20:20:55', '2025-02-01 20:20:55');
+('fc155d48-e096-11ef-9b1c-7c05075eb45f', 'Zeus is too OP in this World', 'Too Stronk', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 2, 1, 'cec09d13-2b9d-11ef-a131-7c05075eb45f', 1, '2025-02-01 20:20:55', '2025-02-01 21:47:43');
 
 -- --------------------------------------------------------
 
@@ -330,10 +354,10 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `profile_pic`, 
 ('09e9e14c-e0a2-11ef-9b1c-7c05075eb45f', 'GODzilla', 'godZilla@gmail.com', '$2y$10$HnCc.GN8wwuPg8kcgcuaWORh1s.1Zb9lSbOhQM4kstZFha3nwkL8C', '679e2432f31953.48157738.jpg', 'GODZILLLAAAA!!!!!', '2548f533c6e3b728eeb5dcfb942bb8b3', '2025-02-01 21:40:03'),
 ('2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'Administrator', 'test@gmail.com', '$2y$10$pGQwAcLY.xsdYEo/hHLXd.Yh8V.4Bp/GACzB/PtdPeUHWw7VAn/1y', '6795eb081dfa93.80781122.jpg', '', '0ffcb1423a3aa3292dbb4e833f34789a', '2025-01-26 15:57:25'),
 ('6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'DaeWae', 'daewae@gmail.com', '$2y$10$qwiRzVzo.FvT/Vnvusen4evl1.8AI1mDJUK4IjrZ8Y1mafxEtrIYS', '679c527074af13.52069371.jpg', 'Dae Wae is the Wae', '2f5c535f7c2ad45244159c9633705d29', '2025-01-31 12:32:48'),
-('8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', 'ImStronkGod', 'stronk@gmail.com', '$2y$10$eNyR7mwlgsD9xXmcvxgkx.AEyOmxpqPAT61VeZgzOqpwJBqim2/ae', '679e129e787045.75339839.png', 'Stronk Boi!!!', '2e7d8dd69e7ed105dbddbe40d3e3efcf', '2025-02-01 20:25:02'),
-('c628eca1-afb4-11ef-b843-7c05075eb45f', 'Zenith', 'zenithzuz@gmail.com', '$2y$10$2jPOiKuBvptyg9NYNEFgGuLa2qByh4lCVa7CXm9ZXMuVik7dVv/je', '674c0e64eb8210.77141986.jpg', 'Hello Guys\r\n', '5edf873c0896aa55046e8f1a6fbeecba', '2024-12-01 15:20:42'),
 ('e18a6c51-c60b-11ef-8986-7c05075eb45f', 'ChouIsOP', 'chou@gmail.com', '$2y$10$bLe57XMAXc111tQnLaubmeQo/GZ2Keuh.6tVKxSZHv1ncRqVNia.2', '6771897dc58b42.49403452.jpg', 'WATAHHHH', '4050a88956f715f399744758c2140a48', '2024-12-30 01:39:40'),
-('f4241b78-df91-11ef-b0d2-7c05075eb45f', 'Testaccount', 'testaccount@gmail.com', '$2y$10$rrVYxhcopV5AfrSzl6Yy6.5GFhKPPzG/BPCp73i9D5JhzDdSluYPS', '679e13ee35ec22.82134501.jpg', 'sample bio', '0ec9dd20731db2f1f5b52b00437b2412', '2025-01-31 13:12:23');
+('ef9d5938-e165-11ef-ac93-7c05075eb45f', 'testUser', 'testuser@gmail.com', '$2y$10$th4uU859apM1i2V.2chWbOuuAnqd7kNOQrO9s4QN.VlGLP042HjzK', '679f6cdc14b367.27850846.png', 'Test Bio', 'ea0c0751977c243b77da9c85af15722f', '2025-02-02 21:02:20'),
+('f4241b78-df91-11ef-b0d2-7c05075eb45f', 'Testaccount', 'testaccount@gmail.com', '$2y$10$rrVYxhcopV5AfrSzl6Yy6.5GFhKPPzG/BPCp73i9D5JhzDdSluYPS', '679e13ee35ec22.82134501.jpg', 'sample bio', '0ec9dd20731db2f1f5b52b00437b2412', '2025-01-31 13:12:23'),
+('fdab0558-e165-11ef-ac93-7c05075eb45f', 'testUser2', 'testuser2@gmail.com', '$2y$10$8i1DpXrvVI8/FClxx8PWbedUX8p17UXWlgORajTAEiJGPo2uOu/nu', NULL, NULL, 'afab5c5cea4594c42ed355d1d958198b', '2025-02-02 21:02:43');
 
 -- --------------------------------------------------------
 
@@ -402,31 +426,7 @@ INSERT INTO `user_groups` (`id`, `user_id`, `greek_id`, `date_joined`) VALUES
 ('6d965e17-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
 ('6d9ed969-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
 ('6da91e48-df8c-11ef-b0d2-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-01-31 12:32:49'),
-('8fa4cbf0-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fad425f-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fb81b32-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fc19b6b-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '2b013a64-2ba0-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fcf14b3-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '44c24fcc-2ba4-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fd94dc9-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '5e965592-2ba6-11ef-a131-7c05075eb45f', '2025-02-01 20:25:02'),
-('8fe6cf31-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '8d2d3e82-2ba4-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('8ff2c65c-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', '8e3c6da0-2ba3-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('8ffe8e13-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('900fcb7c-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('902c4aa1-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('9062b36a-e097-11ef-9b1c-7c05075eb45f', '8f9e8bfa-e097-11ef-9b1c-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-02-01 20:25:03'),
-('c6362c4e-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2024-12-01 15:20:42'),
-('c66dd316-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2024-12-01 15:20:42'),
-('c6935e8d-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c6bbf5d1-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '44c24fcc-2ba4-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c6c96ecb-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '5e965592-2ba6-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c6d3a491-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '8d2d3e82-2ba4-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c6eed24a-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', '8e3c6da0-2ba3-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c6f8e26a-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c7032bf0-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2024-12-01 15:20:43'),
-('c70b8e08-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2024-12-01 15:20:44'),
-('c715d2ea-afb4-11ef-b843-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2024-12-01 15:20:44'),
-('ca9d7fb2-dfbc-11ef-b604-7c05075eb45f', '6ccdd1cc-df8c-11ef-b0d2-7c05075eb45f', 'ca83fe57-dfbc-11ef-b604-7c05075eb45f', '2025-01-31 18:19:01'),
-('cb042def-e044-11ef-b06e-7c05075eb45f', 'c628eca1-afb4-11ef-b843-7c05075eb45f', 'cae89f13-e044-11ef-b06e-7c05075eb45f', '2025-02-01 10:32:34'),
+('e1013d54-e0a2-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', 'e0f5872c-e0a2-11ef-9b1c-7c05075eb45f', '2025-02-01 21:46:03'),
 ('e1982115-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2024-12-30 01:39:40'),
 ('e1a5a493-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2024-12-30 01:39:40'),
 ('e1d008b5-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2024-12-30 01:39:40'),
@@ -438,6 +438,19 @@ INSERT INTO `user_groups` (`id`, `user_id`, `greek_id`, `date_joined`) VALUES
 ('e21faed7-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2024-12-30 01:39:41'),
 ('e229cdd6-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2024-12-30 01:39:41'),
 ('e2325ca2-c60b-11ef-8986-7c05075eb45f', 'e18a6c51-c60b-11ef-8986-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2024-12-30 01:39:41'),
+('efab4b7f-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efb32b27-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efbd70ff-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efc5d06c-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '2b013a64-2ba0-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efccbe9e-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '44c24fcc-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efd6de70-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '5e965592-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efe12003-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '8d2d3e82-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('efecdd65-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', '8e3c6da0-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('effa81e6-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:20'),
+('f0281c4a-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:21'),
+('f0399c3d-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-02-02 21:02:21'),
+('f0450f15-e165-11ef-ac93-7c05075eb45f', 'ef9d5938-e165-11ef-ac93-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:21'),
+('f36608bc-e0a2-11ef-9b1c-7c05075eb45f', '2e9e00c7-dbbb-11ef-a666-7c05075eb45f', '28f5caa3-e097-11ef-9b1c-7c05075eb45f', '2025-02-01 21:46:34'),
 ('f431a2db-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2025-01-31 13:12:23'),
 ('f43bc1a6-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2025-01-31 13:12:23'),
 ('f462b77f-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2025-01-31 13:12:23'),
@@ -449,7 +462,31 @@ INSERT INTO `user_groups` (`id`, `user_id`, `greek_id`, `date_joined`) VALUES
 ('f4a84a3b-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2025-01-31 13:12:23'),
 ('f4ad7725-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-01-31 13:12:24'),
 ('f4b95bfd-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-01-31 13:12:24'),
-('f4c1aaac-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-01-31 13:12:24');
+('f4c1aaac-df91-11ef-b0d2-7c05075eb45f', 'f4241b78-df91-11ef-b0d2-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-01-31 13:12:24'),
+('fdc46676-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2025-02-02 21:02:43'),
+('fdd05383-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fdd5c820-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '0db1bfad-2ba8-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fddc32bd-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fde48dd6-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '1c87d062-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fded22c5-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '2b013a64-2ba0-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fdf22058-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '2adbfbd3-2ba2-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fdf75313-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '44c24fcc-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fdfe0330-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '2b013a64-2ba0-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fe4025a3-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '5e965592-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fe5118f7-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '44c24fcc-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fe580174-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '8d2d3e82-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fe6283c8-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '5e965592-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:44'),
+('fe68f0c2-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '8e3c6da0-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe715283-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '8d2d3e82-2ba4-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe79e143-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe80f7ee-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', '8e3c6da0-2ba3-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe8ac993-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe932d6b-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'b9da2016-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fe9bd18a-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fea27a68-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'b9da2cb2-2ba7-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('feaafe0c-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('feb1b2f5-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'cec09d13-2b9d-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45'),
+('fed758ae-e165-11ef-ac93-7c05075eb45f', 'fdab0558-e165-11ef-ac93-7c05075eb45f', 'eb824654-2ba6-11ef-a131-7c05075eb45f', '2025-02-02 21:02:45');
 
 -- --------------------------------------------------------
 
@@ -570,7 +607,7 @@ ALTER TABLE `verification_codes`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=410;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=430;
 
 --
 -- Constraints for dumped tables
